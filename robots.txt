@@ -13,4 +13,4 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://faybrink.github.io/sitemap.xml
+Sitemap: https://faybrink.github.io/faybrink.github.io-/sitemap.xml
