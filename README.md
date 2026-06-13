@@ -31,6 +31,3 @@ Website: [https://faybrink.github.io/faybrink.github.io-/]
 LinkedIn: [https://www.linkedin.com/in/faybrink/]
 Email: [Fay.Brink@BlairRG.com]
 
-Website: (your link)
-LinkedIn: (your link)
-Email: (your email)
