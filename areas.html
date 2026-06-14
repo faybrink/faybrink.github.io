@@ -13,6 +13,7 @@
   <meta property="og:url" content="https://faybrink.github.io/areas.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Cinzel:wght@400;500&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="" />
   <style>
     :root{--navy:#191C45;--gold:#D6A24A;--cream:#FAE9C1;--gold-light:#e8c07a;--navy-light:#252966;--muted:rgba(250,233,193,0.8);--text:#1a1a2e;--bg:#faf8f4;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -47,7 +48,30 @@
     .footer-legal{font-size:0.6rem;color:var(--muted);line-height:1.7;text-align:right;}
     .footer-legal a{color:var(--muted);text-decoration:none;}
     @media(max-width:700px){footer{flex-direction:column;text-align:center;}.footer-legal{text-align:center;}}
-  </style>
+  
+    .metro-section{max-width:1040px;margin:2.75rem auto 0;padding:0 5vw;}
+    .metro-head{text-align:center;margin-bottom:1.5rem;}
+    .metro-eyebrow{font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.55rem;}
+    .metro-title{font-family:'Cinzel',serif;font-size:clamp(1.3rem,3vw,2rem);font-weight:400;color:var(--navy);letter-spacing:0.03em;margin-bottom:0.55rem;}
+    .metro-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:#44485c;max-width:620px;margin:0 auto;line-height:1.5;}
+    .metro-frame{position:relative;border-top:3px solid var(--gold);box-shadow:0 14px 44px rgba(25,28,69,0.20);border-radius:4px;overflow:hidden;}
+    #map-tilenote{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;text-align:center;padding:1.5rem;background:linear-gradient(135deg,rgba(25,28,69,0.92),rgba(17,19,47,0.92));z-index:500;}
+    #map-tilenote span{font-family:'Cinzel',serif;color:var(--cream);font-size:0.95rem;letter-spacing:0.03em;line-height:1.5;max-width:420px;}
+    #map-tilenote small{font-family:'Raleway',sans-serif;color:var(--muted);font-size:0.78rem;line-height:1.6;max-width:420px;}
+    #metro-map{width:100%;height:520px;background:#dfe5ea;}
+    @media(max-width:700px){#metro-map{height:430px;}}
+    .metro-cap{text-align:center;font-size:0.8rem;color:#5a5f70;margin-top:0.9rem;font-style:italic;font-family:'Cormorant Garamond',serif;}
+    .fay-pin{background:var(--gold);border:2.5px solid #fff;border-radius:50%;box-shadow:0 0 0 2px rgba(25,28,69,0.55),0 3px 8px rgba(0,0,0,0.4);}
+    .leaflet-tooltip.fay-tip{background:transparent;border:none;box-shadow:none;color:var(--navy);font-family:'Cinzel',serif;font-weight:600;font-size:0.78rem;letter-spacing:0.02em;text-shadow:0 0 4px #fff,0 0 4px #fff,0 0 7px #fff;padding:0;}
+    .leaflet-tooltip.fay-tip::before{display:none;}
+    .leaflet-popup-content-wrapper{background:var(--navy);color:var(--cream);border-radius:4px;border-top:3px solid var(--gold);box-shadow:0 6px 24px rgba(25,28,69,0.4);}
+    .leaflet-popup-content{margin:0.85rem 1.1rem;font-family:'Raleway',sans-serif;}
+    .leaflet-popup-content strong{font-family:'Cinzel',serif;color:var(--cream);font-size:0.95rem;letter-spacing:0.02em;display:block;margin-bottom:0.4rem;}
+    .leaflet-popup-content a{color:var(--gold);text-decoration:none;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;}
+    .leaflet-popup-content a:hover{color:var(--gold-light);}
+    .leaflet-popup-tip{background:var(--navy);}
+    .leaflet-container a.leaflet-popup-close-button{color:var(--muted);}
+</style>
 </head>
 <body>
 <nav>
@@ -65,7 +89,21 @@
   <p class="hero-eyebrow">Renaissance Premier Realty Group · Blair Realty Group</p>
   <h1 class="hero-title">Areas &amp; Corridors</h1>
   <div class="gold-rule"></div>
-  <p class="hero-sub">From the forested calm of The Woodlands to the energy of Midtown, Fay serves Houston's most sought-after corridors with local depth and strategy.</p>
+  <p class="hero-sub">From the forested calm of The Woodlands to the energy of Midtown, Fay serves Houston's most sought-after corridors with local depth and strategy, and happily travels beyond them when the right opportunity calls.</p>
+</section>
+
+
+<section class="metro-section">
+  <div class="metro-head">
+    <p class="metro-eyebrow">The Lay of the Land</p>
+    <h2 class="metro-title">Where I Work Across Greater Houston</h2>
+    <p class="metro-sub">My home corridors, pinned in gold on the real map. Rooted in these areas, I happily travel well beyond them across Greater Houston when the right opportunity calls. Tap any gold pin to open its guide.</p>
+  </div>
+  <div class="metro-frame">
+    <div id="metro-map"></div>
+    <div id="map-tilenote"><span>The terrain map is hidden in this preview window</span><small>This preview blocks external map images. The full interactive terrain map loads on your live site and when you open this file in a browser.</small></div>
+  </div>
+  <p class="metro-cap">Pan and zoom to explore. Map data &copy; OpenStreetMap contributors &middot; tiles &copy; CARTO.</p>
 </section>
 
 <div class="corridors-wrap">
@@ -73,7 +111,7 @@
     <div class="corridor-card">
       <h2 class="corridor-name">The Woodlands &amp; Spring</h2>
       <p class="corridor-desc">Master-planned luxury tucked into the pines up north, with some of the best schools in the state. It is the spot relocating executives and families ask me about first, and for good reason.</p>
-      
+      <a href="the-woodlands.html" class="corridor-guide">Explore The Woodlands →</a>
     </div>
     <div class="corridor-card">
       <h2 class="corridor-name">Memorial &amp; Energy Corridor</h2>
@@ -122,5 +160,45 @@
     <a href="https://www.har.com/mhf/terms/dispBrokerInfo?sitetype=aws&amp;cid=780216" target="_blank" rel="noopener">Information About Brokerage Services</a> · <a href="https://content.harstatic.com/pdf/TREC_CPN.pdf" target="_blank" rel="noopener">TREC Consumer Protection Notice</a>
   </div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin=""></script>
+<script>
+(function(){
+  function initMap(){
+    if(typeof L==='undefined'){return;}
+    var map=L.map('metro-map',{scrollWheelZoom:false}).setView([29.85,-95.5],9);
+    var tiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
+      maxZoom:19,subdomains:'abcd',
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    }).addTo(map);
+    var tilesOk=false;
+    tiles.on('load',function(){tilesOk=true;});
+    tiles.on('tileload',function(){tilesOk=true;});
+    setTimeout(function(){if(!tilesOk){var n=document.getElementById('map-tilenote');if(n){n.style.display='flex';}}},4500);
+    var pin=L.divIcon({className:'fay-pin',iconSize:[18,18],iconAnchor:[9,9]});
+    var corridors=[
+      {name:'The Woodlands & Spring',lat:30.1658,lng:-95.4613,url:'the-woodlands.html',dir:'right'},
+      {name:'North Houston',lat:30.0975,lng:-95.6161,url:null,dir:'left'},
+      {name:'Cypress',lat:29.9691,lng:-95.6972,url:'blog-living-in-cypress-tx.html',dir:'left'},
+      {name:'Memorial & Energy Corridor',lat:29.7836,lng:-95.5577,url:null,dir:'top'},
+      {name:'Katy',lat:29.7858,lng:-95.8245,url:'blog-living-in-katy-tx.html',dir:'left'},
+      {name:'Fulshear',lat:29.6936,lng:-95.8908,url:'blog-living-in-fulshear-tx.html',dir:'left'},
+      {name:'Heights / Montrose / Midtown',lat:29.7866,lng:-95.3980,url:null,dir:'right'}
+    ];
+    var pts=[];
+    corridors.forEach(function(c){
+      var m=L.marker([c.lat,c.lng],{icon:pin}).addTo(map);
+      m.bindTooltip(c.name,{permanent:true,direction:c.dir,className:'fay-tip'});
+      var pop='<strong>'+c.name+'</strong>'+(c.url?'<a href="'+c.url+'">View area guide &rarr;</a>':'<span style="color:rgba(250,233,193,0.7);font-size:0.75rem;">Full guide coming soon</span>');
+      m.bindPopup(pop);
+      pts.push([c.lat,c.lng]);
+    });
+    var dt=L.circleMarker([29.7604,-95.3698],{radius:5,color:'#fff',weight:2,fillColor:'#191C45',fillOpacity:1}).addTo(map);
+    dt.bindTooltip('Downtown Houston',{permanent:true,direction:'bottom',className:'fay-tip'});
+    map.fitBounds(pts,{padding:[50,50]});
+  }
+  if(document.readyState!=='loading'){initMap();}else{document.addEventListener('DOMContentLoaded',initMap);}
+})();
+</script>
 </body>
 </html>
