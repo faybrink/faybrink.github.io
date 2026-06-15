@@ -11,7 +11,7 @@ I also use GitHub as a creative space to build and experiment with my personal b
 
 🌱 Currently learning: HTML/CSS, GitHub Pages, SEO + AEO + GEO content strategy, Chess 
 🔭 Working on: A personal site for Houston new construction insights + marketing systems for model homes, relocation, divorce & luxury real estate
-🌍 Languages: English, beginner HTML/CSS, advanced Canva and Capcut
+🌍 Languages: English and art/design, beginner HTML/CSS, advanced Canva and Capcut
 📫 How to reach me: Fay.Brink@BlairRG.com
 ⚡ Fun fact: I tour new construction homes daily and turn builder information into buyer clarity
 
@@ -21,7 +21,7 @@ I’m interested in how real estate, storytelling, and search visibility interse
 I am also on a mission to help people grow their wealth through real estate and protect their legacy for generations to come.
 
 Current Work 💻
-Houston New Construction Site Rep for Clay Residential and Solo Realtor for Blair Realty Group
+Houston New Construction Site Rep for Clay Residential and Solo Realtor for Blair Realty Group, Proud Founder and Brand Creator of Renaissance Premier Realty Group LLC 
 
 A personal GitHub Pages project focused on simplifying the Houston new construction market through guides, community insights, and buyer education.
 
