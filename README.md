@@ -11,7 +11,7 @@ I also use GitHub as a creative space to build and experiment with my personal b
 
 🌱 Currently learning: HTML/CSS, GitHub Pages, SEO + AEO + GEO content strategy, Chess 
 🔭 Working on: A personal site for Houston new construction insights + marketing systems for model homes, relocation, divorce & luxury real estate
-🌍 Languages: English, beginner HTML/CSS
+🌍 Languages: English, beginner HTML/CSS, advanced Canva and Capcut
 📫 How to reach me: Fay.Brink@BlairRG.com
 ⚡ Fun fact: I tour new construction homes daily and turn builder information into buyer clarity
 
