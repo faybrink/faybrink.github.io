@@ -316,13 +316,18 @@ function toggleFaq(btn){var a=btn.nextElementSibling;var ar=btn.querySelector('.
       {name:"Cinco Ranch",lat:29.7385,lng:-95.7677,dir:"bottom",note:"The established crown jewel, with LaCenterra."},
       {name:"Cane Island",lat:29.8016,lng:-95.829,dir:"top",note:"Upscale and boutique, north of I-10."},
       {name:"Elyson",lat:29.8588,lng:-95.78,dir:"top",note:"Fast-growing, with newer schools."},
-      {name:"Seven Meadows",lat:29.73,lng:-95.79,dir:"left",note:"Golf-course living, mature streets."}
+      {name:"Seven Meadows",lat:29.73,lng:-95.79,dir:"left",note:"Golf-course living, mature streets."},
+      {name:"Grand Lakes",lat:29.728,lng:-95.749,dir:"right",note:"Lakes, trails, and mature landscaping."},
+      {name:"Firethorne",lat:29.741,lng:-95.858,dir:"left",note:"Value and newer construction on the Katy/Fulshear line."}
     ];
+    var bounds=[];
     pins.forEach(function(c){
       var m=L.marker([c.lat,c.lng],{icon:pin}).addTo(map);
       m.bindTooltip(c.name,{permanent:true,direction:c.dir,className:'fay-tip'});
       if(c.note){m.bindPopup('<strong>'+c.name+'</strong><span style="color:rgba(250,233,193,0.85);font-size:0.8rem;">'+c.note+'</span>');}
+      bounds.push([c.lat,c.lng]);
     });
+    if(bounds.length>1){map.fitBounds(bounds,{padding:[55,55],maxZoom:14});}
   }
   if(document.readyState!=='loading'){initMap();}else{document.addEventListener('DOMContentLoaded',initMap);}
 })();
