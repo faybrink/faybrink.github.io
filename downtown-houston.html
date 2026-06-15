@@ -273,10 +273,10 @@ function toggleFaq(btn){var a=btn.nextElementSibling;var ar=btn.querySelector('.
     var ok=false;tiles.on('load',function(){ok=true;});tiles.on('tileload',function(){ok=true;});
     setTimeout(function(){if(!ok){var n=document.getElementById('map-tilenote');if(n)n.style.display='flex';}},4500);
     var pin=L.divIcon({className:'fay-pin',iconSize:[18,18],iconAnchor:[9,9]});
-    var pins=[{name:"Discovery Green",lat:29.753,lng:-95.361,dir:"right",note:"12-acre urban park — downtown's living room."}
-    {name:"Theater District",lat:29.757,lng:-95.373,dir:"top",note:"Jones Hall, Alley Theatre, Wortham — performing arts cluster."}
-    {name:"Minute Maid Park",lat:29.757,lng:-95.356,dir:"top",note:"Home of the Houston Astros."}
-    {name:"Market Square",lat:29.761,lng:-95.367,dir:"left",note:"Houston's oldest commercial district, now bar and dining hub."}
+    var pins=[{name:"Discovery Green",lat:29.753,lng:-95.361,dir:"right",note:"12-acre urban park — downtown's living room."},
+    {name:"Theater District",lat:29.757,lng:-95.373,dir:"top",note:"Jones Hall, Alley Theatre, Wortham — performing arts cluster."},
+    {name:"Minute Maid Park",lat:29.757,lng:-95.356,dir:"top",note:"Home of the Houston Astros."},
+    {name:"Market Square",lat:29.761,lng:-95.367,dir:"left",note:"Houston's oldest commercial district, now bar and dining hub."},
     {name:"EaDo",lat:29.749,lng:-95.35,dir:"bottom",note:"East Downtown — fastest-growing adjacent neighborhood."}];
     pins.forEach(function(c){
       var m=L.marker([c.lat,c.lng],{icon:pin}).addTo(map);

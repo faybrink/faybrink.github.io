@@ -275,10 +275,10 @@ function toggleFaq(btn){var a=btn.nextElementSibling;var ar=btn.querySelector('.
     var ok=false;tiles.on('load',function(){ok=true;});tiles.on('tileload',function(){ok=true;});
     setTimeout(function(){if(!ok){var n=document.getElementById('map-tilenote');if(n)n.style.display='flex';}},4500);
     var pin=L.divIcon({className:'fay-pin',iconSize:[18,18],iconAnchor:[9,9]});
-    var pins=[{name:"Cross Creek Ranch",lat:29.72,lng:-95.855,dir:"top",note:"Howard Hughes master-planned community — resort amenities, $300K–$900K+."}
-    {name:"Weston Lakes",lat:29.68,lng:-95.91,dir:"left",note:"Gated golf & lake community — custom builds, $500K–$1.5M+."}
-    {name:"Jordan Ranch",lat:29.706,lng:-95.926,dir:"bottom",note:"Newer master-planned, strong builder incentives, from low $300s."}
-    {name:"Fulbrook",lat:29.695,lng:-95.882,dir:"right",note:"Luxury estate lots along Fulshear Creek, $700K+."}
+    var pins=[{name:"Cross Creek Ranch",lat:29.72,lng:-95.855,dir:"top",note:"Howard Hughes master-planned community — resort amenities, $300K–$900K+."},
+    {name:"Weston Lakes",lat:29.68,lng:-95.91,dir:"left",note:"Gated golf & lake community — custom builds, $500K–$1.5M+."},
+    {name:"Jordan Ranch",lat:29.706,lng:-95.926,dir:"bottom",note:"Newer master-planned, strong builder incentives, from low $300s."},
+    {name:"Fulbrook",lat:29.695,lng:-95.882,dir:"right",note:"Luxury estate lots along Fulshear Creek, $700K+."},
     {name:"Old Town Fulshear",lat:29.686,lng:-95.895,dir:"bottom",note:"The original townsite — local dining, feed store, small-town anchor."}];
     pins.forEach(function(c){
       var m=L.marker([c.lat,c.lng],{icon:pin}).addTo(map);
