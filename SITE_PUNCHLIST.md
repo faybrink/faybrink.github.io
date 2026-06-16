@@ -101,3 +101,111 @@
 - All pages currently use **self-contained base64 images** (no external hosting required for GitHub Pages)
 - Blog post pages use a separate `article-wrap` layout — different from the page-hero layout used on area and service pages
 - The `build_page.py` builder at `/home/claude/build_page.py` is the template for new area pages — always run the 3 map fixes after building (tile layer reference, events, pin commas)
+
+---
+
+## BUILDER RESOURCE COLLECTION — Only You Can Get These
+
+*These items must be collected in person or by contacting each builder directly.
+The builders.html page has "Coming Soon" placeholders ready to be replaced with real PDFs.*
+
+### 🔴 Priority 1 — Clay Residential / Marvida (You're Already On-Site)
+You have direct access. Pull all of the following from your OSC or sales desk:
+
+- [ ] **Current Incentive Sheet** — Rate buy-down %, closing cost $, appliance/design credit. Updated monthly — pull the latest version.
+- [ ] **Available Floor Plan PDFs** — One PDF per plan (Hillcrest, Magnolia, etc.). Ask for the full current lineup.
+- [ ] **Standard Features & Spec Sheet** — What is standard vs. upgrade in each series. Ask: "Can I get the features list that shows standard vs. upgrade?" They have it.
+- [ ] **Community Site Map with Available Lots** — Phase map showing sold, under contract, and available lots with lot premiums noted.
+- [ ] **HOA Documents** — CC&Rs, fee schedule, Marvida master HOA and Land Tejas HOA info.
+- [ ] **Preferred Lender Rate Special** — Current rate if using their preferred lender. Get the number so buyers can compare.
+- [ ] **Warranty Summary** — Builder's 1-2-10 warranty overview PDF.
+- [ ] **Completion Timeline / Build Schedule** — How long from contract to close on available specs vs. to-be-built.
+
+**Where to go:** Walk to the Clay Residential sales office on-site at Marvida (Fry Rd & West Rd, Cypress).
+
+---
+
+### 🟡 Priority 2 — Bridgeland Model Home Row (7 Builders in One Trip)
+**Address:** Bridgeland Creek Pkwy & Mason Rd area, Cypress 77433 — look for the model home village signage off Bridgeland Lake Dr.
+**Best time:** Weekday morning (less crowded, sales agents have more time).
+
+From EACH builder's model home, collect:
+- [ ] Current incentive flyer (ask: "Do you have today's incentive sheet?")
+- [ ] Floor plan brochure / plan book
+- [ ] Standard features list (ask: "What's included in the base price vs. design center?")
+- [ ] HOA fee information for this community section
+- [ ] Preferred lender current rate special and any builder credit for using them
+
+**Builders to hit in Bridgeland:**
+- [ ] David Weekley
+- [ ] Lennar / Village Builders
+- [ ] Perry Homes
+- [ ] Westin Homes
+- [ ] Newmark Homes
+- [ ] Taylor Morrison
+- [ ] Toll Brothers (Parkland Village — separate model location, ask for directions at the village)
+
+---
+
+### 🟡 Priority 3 — Cross Creek Ranch, Fulshear (6 Builders)
+**Address:** FM 1093 & Cross Creek Bend Ln, Fulshear 77441
+
+Same collection as Bridgeland for each builder present:
+- [ ] Perry Homes
+- [ ] Taylor Morrison
+- [ ] Westin Homes
+- [ ] Chesmar Homes
+- [ ] David Weekley
+- [ ] Newmark Homes
+
+---
+
+### 🟡 Priority 4 — Harvest Green, Richmond (Fort Bend ISD Focus)
+**Address:** Harlem Rd & W Airport Blvd, Richmond 77406
+
+- [ ] David Weekley
+- [ ] Perry Homes
+- [ ] Lennar / Village Builders
+- [ ] Taylor Morrison
+- [ ] Meritage Homes
+- [ ] Westin Homes
+
+Also: Ask for the Harvest Green master developer info (Fort Bend ISD zoning confirmation letter/map is useful for buyers).
+
+---
+
+### 🟢 Priority 5 — Online Collection (No Drive Required)
+
+These can be pulled from builder websites or by emailing their OSC:
+
+| Builder | What to Request | How |
+|---------|----------------|-----|
+| D.R. Horton | Current Houston incentives PDF | drhorton.com → Houston → Request Info |
+| KB Home | Built-to-Order options guide | kbhome.com → Book appointment online |
+| Meritage | Energy features comparison vs. standard | meritagehomes.com → Contact |
+| Pulte | Del Webb at Sweetgrass amenities guide | delwebb.com → Contact |
+| Perry Homes | Digital floor plan catalog | perryhomes.com → Floor Plans section |
+| CastleRock | Standard features comparison | castlerocktx.com → Contact |
+
+---
+
+### 💡 What to ASK at Every Model Home
+
+Script for the sales agent:
+> "I'm a REALTOR who represents buyers considering this community. I'd love to get your current incentive sheet, a floor plan brochure, and your standard features list so I can share them with buyers I'm working with. Do you have a packet you give to agents?"
+
+Most builder sales offices have a **Realtor/Agent packet** ready to hand out — it often includes more detail than the consumer-facing materials. Always identify yourself as a REALTOR first.
+
+---
+
+### 🏗️ Future Resource Ideas for builders.html
+
+These would add significant value once you have the source material:
+
+- **Design Center Upgrade Price Lists** — What specific upgrades cost at each builder's design center. Extremely rare to share publicly but builders sometimes provide to registered agents. Ask directly.
+- **Builder Warranty Comparison Chart** — Side-by-side of 1-yr, 2-yr, 10-yr warranty terms across 5-6 builders.
+- **Preferred Lender vs. Outside Lender Comparison** — A real example showing rate, closing cost, and monthly payment comparison. Would be your most-shared resource on this page.
+- **HOA Fee Comparison by Community** — What the monthly HOA + master fees total across Bridgeland, Cross Creek Ranch, Marvida, Harvest Green, etc.
+- **Custom Home Refinishing Guide** — A guide for buyers who want to customize a production home after close (paint, flooring, fixtures) — what to do yourself, what to hire out, what affects warranty.
+- **"What the Inspection Found" Series** — Anonymized real examples of new construction inspection findings. You would need homeowner permission but this content is gold.
+
