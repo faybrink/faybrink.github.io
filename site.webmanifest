@@ -1,0 +1,12 @@
+{
+  "name": "Renaissance Premier Realty Group",
+  "short_name": "Fay Brink",
+  "description": "Fay Brink, REALTOR® — Renaissance Premier Realty Group, brokered by Blair Realty Group. Houston area real estate.",
+  "icons": [
+    { "src": "favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" }
+  ],
+  "theme_color": "#191C45",
+  "background_color": "#191C45",
+  "display": "browser"
+}
