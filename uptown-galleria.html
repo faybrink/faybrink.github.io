@@ -291,10 +291,10 @@ function toggleFaq(btn){var a=btn.nextElementSibling;var ar=btn.querySelector('.
     var ok=false;tiles.on('load',function(){ok=true;});tiles.on('tileload',function(){ok=true;});
     setTimeout(function(){if(!ok){var n=document.getElementById('map-tilenote');if(n)n.style.display='flex';}},4500);
     var pin=L.divIcon({className:'fay-pin',iconSize:[18,18],iconAnchor:[9,9]});
-    var pins=[{name:"The Galleria",lat:29.737,lng:-95.462,dir:"top",note:"1M+ sq ft retail, two hotels, ice rink, Post Oak corridor anchor."}
-    {name:"Tanglewood",lat:29.742,lng:-95.48,dir:"left",note:"Estate homes, old Houston character, $700K–$4M+."}
-    {name:"River Oaks",lat:29.745,lng:-95.432,dir:"right",note:"Houston's most prestigious residential address, $1.5M–$10M+."}
-    {name:"Afton Oaks",lat:29.726,lng:-95.456,dir:"bottom",note:"Established, strong HISD zoning, $500K–$1.2M."}
+    var pins=[{name:"The Galleria",lat:29.737,lng:-95.462,dir:"top",note:"1M+ sq ft retail, two hotels, ice rink, Post Oak corridor anchor."},
+    {name:"Tanglewood",lat:29.742,lng:-95.48,dir:"left",note:"Estate homes, old Houston character, $700K–$4M+."},
+    {name:"River Oaks",lat:29.745,lng:-95.432,dir:"right",note:"Houston's most prestigious residential address, $1.5M–$10M+."},
+    {name:"Afton Oaks",lat:29.726,lng:-95.456,dir:"bottom",note:"Established, strong HISD zoning, $500K–$1.2M."},
     {name:"Post Oak Blvd",lat:29.748,lng:-95.459,dir:"top",note:"Luxury high-rise corridor — Cosmopolitan, Montebello, Arabella."}];
     pins.forEach(function(c){
       var m=L.marker([c.lat,c.lng],{icon:pin}).addTo(map);

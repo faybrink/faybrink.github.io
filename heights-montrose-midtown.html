@@ -291,10 +291,10 @@ function toggleFaq(btn){var a=btn.nextElementSibling;var ar=btn.querySelector('.
     var ok=false;tiles.on('load',function(){ok=true;});tiles.on('tileload',function(){ok=true;});
     setTimeout(function(){if(!ok){var n=document.getElementById('map-tilenote');if(n)n.style.display='flex';}},4500);
     var pin=L.divIcon({className:'fay-pin',iconSize:[18,18],iconAnchor:[9,9]});
-    var pins=[{name:"Houston Heights",lat:29.798,lng:-95.402,dir:"top",note:"Victorian bungalows, 19th Street main street, strong resale."}
-    {name:"Montrose",lat:29.749,lng:-95.39,dir:"left",note:"Eclectic, arts-forward, the Menil Collection nearby."}
-    {name:"Midtown",lat:29.743,lng:-95.373,dir:"bottom",note:"Urban condos and townhomes, light rail, adjacent to downtown."}
-    {name:"EaDo",lat:29.749,lng:-95.349,dir:"right",note:"East Downtown — fastest-appreciating inner-loop pocket."}
+    var pins=[{name:"Houston Heights",lat:29.798,lng:-95.402,dir:"top",note:"Victorian bungalows, 19th Street main street, strong resale."},
+    {name:"Montrose",lat:29.749,lng:-95.39,dir:"left",note:"Eclectic, arts-forward, the Menil Collection nearby."},
+    {name:"Midtown",lat:29.743,lng:-95.373,dir:"bottom",note:"Urban condos and townhomes, light rail, adjacent to downtown."},
+    {name:"EaDo",lat:29.749,lng:-95.349,dir:"right",note:"East Downtown — fastest-appreciating inner-loop pocket."},
     {name:"Buffalo Bayou Park",lat:29.76,lng:-95.375,dir:"top",note:"160 acres of trails and public art along the bayou."}];
     pins.forEach(function(c){
       var m=L.marker([c.lat,c.lng],{icon:pin}).addTo(map);

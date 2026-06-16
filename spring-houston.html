@@ -291,10 +291,10 @@ function toggleFaq(btn){var a=btn.nextElementSibling;var ar=btn.querySelector('.
     var ok=false;tiles.on('load',function(){ok=true;});tiles.on('tileload',function(){ok=true;});
     setTimeout(function(){if(!ok){var n=document.getElementById('map-tilenote');if(n)n.style.display='flex';}},4500);
     var pin=L.divIcon({className:'fay-pin',iconSize:[18,18],iconAnchor:[9,9]});
-    var pins=[{name:"Champions Area",lat:30.022,lng:-95.49,dir:"left",note:"Established corridor, strong Klein ISD zoning, $250K–$600K."}
-    {name:"Gleannloch Farms",lat:30.066,lng:-95.575,dir:"top",note:"Master-planned, golf course, Klein ISD, $400K–$800K."}
-    {name:"Old Town Spring",lat:30.062,lng:-95.415,dir:"right",note:"Historic shopping district, antiques, seasonal events."}
-    {name:"Augusta Pines",lat:30.073,lng:-95.556,dir:"top",note:"Golf-course community, Klein ISD, $400K–$700K+."}
+    var pins=[{name:"Champions Area",lat:30.022,lng:-95.49,dir:"left",note:"Established corridor, strong Klein ISD zoning, $250K–$600K."},
+    {name:"Gleannloch Farms",lat:30.066,lng:-95.575,dir:"top",note:"Master-planned, golf course, Klein ISD, $400K–$800K."},
+    {name:"Old Town Spring",lat:30.062,lng:-95.415,dir:"right",note:"Historic shopping district, antiques, seasonal events."},
+    {name:"Augusta Pines",lat:30.073,lng:-95.556,dir:"top",note:"Golf-course community, Klein ISD, $400K–$700K+."},
     {name:"Spring Creek Greenway",lat:30.02,lng:-95.45,dir:"bottom",note:"Wooded hike-and-bike trail network through north Harris County."}];
     pins.forEach(function(c){
       var m=L.marker([c.lat,c.lng],{icon:pin}).addTo(map);

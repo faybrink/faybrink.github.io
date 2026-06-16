@@ -287,7 +287,7 @@ function toggleFaq(btn){var a=btn.nextElementSibling;var ar=btn.querySelector('.
   function initMap(){
     if(typeof L==='undefined'){return;}
     var map=L.map('area-map',{scrollWheelZoom:false}).setView([29.735,-95.425],13);
-    var tiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>'}).addTo(map);
+    var tiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors &copy; <a href=\"https://carto.com/attributions\">CARTO</a>'}).addTo(map);
     var ok=false;tiles.on('load',function(){ok=true;});tiles.on('tileload',function(){ok=true;});
     setTimeout(function(){if(!ok){var n=document.getElementById('map-tilenote');if(n)n.style.display='flex';}},4500);
     var pin=L.divIcon({className:'fay-pin',iconSize:[18,18],iconAnchor:[9,9]});
