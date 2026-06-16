@@ -117,13 +117,24 @@
       .article-wrap{grid-template-columns:1fr !important;}
       .sidebar{display:none;}
     }
-</style>
+
+  /* ── Share widget ── */
+  .share-strip{display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;padding:1.25rem 0;border-top:1px solid rgba(214,162,74,0.2);margin-top:2rem;}
+  .share-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--slate,#4a5a6a);font-weight:600;margin-right:0.25rem;}
+  .share-btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;padding:0.5rem 0.9rem;border:1px solid rgba(25,28,69,0.18);text-decoration:none;color:var(--navy,#191C45);background:#fff;cursor:pointer;font-family:inherit;transition:all .2s;}
+  .share-btn:hover{background:var(--navy,#191C45);color:#fff;border-color:var(--navy,#191C45);}
+  .share-btn.native{background:var(--gold,#D6A24A);color:var(--navy,#191C45);border-color:var(--gold,#D6A24A);}
+  .share-btn.native:hover{background:#b8882e;border-color:#b8882e;}
+  .share-btn.copied{background:#2a7a4f;color:#fff;border-color:#2a7a4f;}
+  @media(max-width:600px){.share-strip{gap:0.5rem;}.share-btn{font-size:0.6rem;padding:0.45rem 0.7rem;}}
+  </style>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#191C45" />
+  <link rel="alternate" type="application/rss+xml" title="The Strategy Files — Fay Brink" href="feed.xml" />
 </head>
 <body>
 <nav>
@@ -192,6 +203,15 @@
         <a href="https://calendar.app.google/h4uUxnSXk6PqpF3g8" target="_blank" rel="noopener" style="display:inline-block;background:var(--gold);color:var(--navy);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;padding:0.75rem 1.4rem;text-decoration:none;">Book a Free Consultation &rarr;</a>
       </div>
     </div>
+    <div class="share-strip">
+  <span class="share-label">Share</span>
+  <button class="share-btn native" style="display:none;">&#8679; Share</button>
+  <a class="share-btn" data-share="x" href="#" target="_blank" rel="noopener">&#120143; / Twitter</a>
+  <a class="share-btn" data-share="facebook" href="#" target="_blank" rel="noopener">Facebook</a>
+  <a class="share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
+  <a class="share-btn" data-share="email" href="#">Email</a>
+  <button class="share-btn" data-copy>Copy Link</button>
+</div>
     <div class="tags" style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(214,162,74,0.2);">
       <span class="tag">School Districts</span><span class="tag">Houston Buyers</span><span class="tag">Cy-Fair ISD</span><span class="tag">Katy ISD</span><span class="tag">HISD</span><span class="tag">Relocation</span><span class="tag">Northwest Houston</span>
     </div>
@@ -231,6 +251,61 @@
 <script>
 function toggleMobileNav(){var nr=document.querySelector('.nav-right');if(nr){nr.classList.toggle('mob-open');}var mn=document.getElementById('mobile-nav');if(mn){mn.classList.toggle('open');}}
 document.addEventListener('click',function(e){if(!e.target.closest('nav')){var nr=document.querySelector('.nav-right');if(nr){nr.classList.remove('mob-open');}var mn=document.getElementById('mobile-nav');if(mn){mn.classList.remove('open');}}});
+</script>
+<script>
+(function(){
+  function buildShare(){
+    var url   = window.location.href;
+    var title = document.title.replace(/\s*\|.*$/,'').trim();
+    var enc   = encodeURIComponent;
+    var strip = document.querySelector('.share-strip');
+    if(!strip) return;
+
+    // Native share (mobile) — show if supported
+    if(navigator.share){
+      var nb = strip.querySelector('.native');
+      if(nb){
+        nb.style.display='inline-flex';
+        nb.addEventListener('click',function(){
+          navigator.share({title:title,url:url}).catch(function(){});
+        });
+      }
+    }
+
+    // Platform links
+    var links = {
+      'x':        'https://twitter.com/intent/tweet?url='+enc(url)+'&text='+enc(title)+'&via=FayBrinkHouston',
+      'facebook': 'https://www.facebook.com/sharer/sharer.php?u='+enc(url),
+      'linkedin': 'https://www.linkedin.com/sharing/share-offsite/?url='+enc(url),
+      'email':    'mailto:?subject='+enc(title)+'&body='+enc(title+'\n\n'+url)
+    };
+    strip.querySelectorAll('[data-share]').forEach(function(btn){
+      var plat = btn.getAttribute('data-share');
+      if(links[plat]) btn.href = links[plat];
+    });
+
+    // Copy link
+    var copy = strip.querySelector('[data-copy]');
+    if(copy){
+      copy.addEventListener('click',function(){
+        navigator.clipboard.writeText(url).then(function(){
+          copy.textContent='Copied!';
+          copy.classList.add('copied');
+          setTimeout(function(){copy.textContent='Copy Link';copy.classList.remove('copied');},2000);
+        }).catch(function(){
+          var ta=document.createElement('textarea');
+          ta.value=url; document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+          copy.textContent='Copied!'; copy.classList.add('copied');
+          setTimeout(function(){copy.textContent='Copy Link';copy.classList.remove('copied');},2000);
+        });
+      });
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',buildShare);}
+  else{buildShare();}
+})();
 </script>
 </body>
 </html>
