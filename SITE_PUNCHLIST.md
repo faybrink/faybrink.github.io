@@ -209,3 +209,16 @@ These would add significant value once you have the source material:
 - **Custom Home Refinishing Guide** — A guide for buyers who want to customize a production home after close (paint, flooring, fixtures) — what to do yourself, what to hire out, what affects warranty.
 - **"What the Inspection Found" Series** — Anonymized real examples of new construction inspection findings. You would need homeowner permission but this content is gold.
 
+
+---
+
+## DESIGNATION MARKS — Low Priority / Not SEO-Immediate
+
+*Skip until higher-priority items are done. These are trust signals for human visitors, not search engines.*
+
+- [ ] Download CLHMS mark (logo) from Institute for Luxury Home Marketing → add to `wealth-strategy.html` and `river-oaks-rice-village.html`
+- [ ] Download CNHP mark from NAHB → add to `builders.html` and `new-construction.html`
+- [ ] Download Divorce Specialist mark → add to `divorce-real-estate.html`
+
+Note: Use the compact designation logo/mark only — not full certificate scans. Certificate scans go on LinkedIn and listing presentations, not web pages.
+
