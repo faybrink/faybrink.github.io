@@ -222,3 +222,72 @@ These would add significant value once you have the source material:
 
 Note: Use the compact designation logo/mark only — not full certificate scans. Certificate scans go on LinkedIn and listing presentations, not web pages.
 
+
+---
+
+## DISCLAIMER SYSTEM — Auto-Protecting Future Content
+
+Two files at `/home/claude/` handle all legal disclaimers going forward.
+**Never build a new post or page without using these.**
+
+### Files
+
+| File | Purpose |
+|------|---------|
+| `/home/claude/disclaimers.py` | Library of 9 category-specific disclaimer blocks |
+| `/home/claude/post_template.py` | Master blog post factory — auto-injects disclaimers |
+
+### How to use in a new build session
+
+```python
+from post_template import make_post
+from disclaimers import get_disclaimer
+
+# Blog post — disclaimers auto-selected from data_cat + title keywords
+html = make_post(
+    filename   = 'blog-new-article.html',
+    title      = 'Title Here',
+    meta_desc  = 'SEO description',
+    keywords   = 'kw1, kw2',
+    category   = 'Display Category',
+    data_cat   = 'taxes',           # drives auto-disclaimer selection
+    pub_date   = 'June 17, 2026',
+    body_html  = article_body,
+    tags       = ['Tag1', 'Tag2'],
+    byline     = 'Fay Brink',       # or 'Fay Brink, Divorce Specialist'
+    fair_housing = False,           # set True for neighborhood content
+)
+```
+
+### Disclaimer categories available
+
+| Key | Triggers for | Warns about |
+|-----|-------------|-------------|
+| `universal` | All posts | General: not professional advice |
+| `taxes` | tax, homestead, capital gains, widow | CPA required, deadline urgency |
+| `divorce` | divorce, marital | Licensed Texas attorney required |
+| `estate` | legacy, medicaid, trust, lady bird | Licensed Texas estate attorney required |
+| `senior` | senior, elder | Legal + medical + financial team required |
+| `wealth` | wealth, heloc, velocity, 1031, cost segregation | CPA + financial advisor required |
+| `flood` | flood, insurance | Licensed insurance professional required |
+| `inspection` | inspect, pier and beam, foundation | Licensed inspector + engineer required |
+| `credit` | credit, mortgage qualification | Licensed mortgage professional required |
+| `relocation` | school, district | Verify zoning directly with district |
+| `fair_housing` | Any neighborhood characterization | Fair Housing Act notice |
+
+### Auto-detection
+`make_post()` scans the article title for keywords and auto-adds the right disclaimers.
+"Houston Property Tax Guide" automatically adds `universal` + `taxes`.
+"Heights Home Inspection" automatically adds `universal` + `inspection`.
+You do not need to manually specify categories if the title contains the keywords.
+
+### For service pages (not blog posts)
+Use `get_disclaimer()` directly and insert the returned HTML into the page template
+near the relevant content sections.
+
+### Notes
+- TREC-required disclosure links (Information About Brokerage Services + Consumer Protection Notice) are in the standard footer on every page — already covered.
+- Fair Housing notice is OFF by default. Turn it ON for area guide pages, neighborhood characterization content, or anything that describes who lives somewhere.
+- Disclaimers are styled to match site branding and are visually distinct but not alarmist.
+- The disclaimer system does NOT replace your obligation to disclose known material defects in an actual transaction. That is a transaction-level obligation, not a content-level one.
+
