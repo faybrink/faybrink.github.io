@@ -140,5 +140,29 @@
     <author>Fay.Brink@BlairRG.com (Fay Brink)</author>
     <category>Houston Real Estate</category>
   </item>
-  </channel>
+    <item>
+    <title>Where to Live in Houston When You Work at the Texas Medical Center</title>
+    <link>https://faybrink.github.io/blog-tmx-neighborhood-guide.html</link>
+    <description>A former Houston nurse explains the real commute picture from every major neighborhood near the TMC — Museum District, Bellaire, West U, Braeswood, Westbury, Midtown, and Montrose.</description>
+    <pubDate>Tue, 17 Jun 2026 08:00:00 -0500</pubDate>
+    <guid isPermaLink="true">https://faybrink.github.io/blog-tmx-neighborhood-guide.html</guid>
+    <category>Medical Relocation</category>
+  </item>
+  <item>
+    <title>Best Neighborhoods for Night Shift Workers in Houston</title>
+    <link>https://faybrink.github.io/blog-night-shift-workers-houston.html</link>
+    <description>Safe at midnight, quiet for day sleeping, close enough to matter. Which Houston neighborhoods actually work for people on overnight healthcare schedules.</description>
+    <pubDate>Tue, 17 Jun 2026 08:00:00 -0500</pubDate>
+    <guid isPermaLink="true">https://faybrink.github.io/blog-night-shift-workers-houston.html</guid>
+    <category>Medical Relocation</category>
+  </item>
+  <item>
+    <title>Buying a Home in Houston During Residency: What Residents and Fellows Need to Know</title>
+    <link>https://faybrink.github.io/blog-buying-houston-during-residency.html</link>
+    <description>Physician mortgage programs, the right timeline question, and what price range actually works on a resident salary in one of the country's most affordable major medical markets.</description>
+    <pubDate>Tue, 17 Jun 2026 08:00:00 -0500</pubDate>
+    <guid isPermaLink="true">https://faybrink.github.io/blog-buying-houston-during-residency.html</guid>
+    <category>Medical Relocation</category>
+  </item>
+</channel>
 </rss>
