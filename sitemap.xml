@@ -217,12 +217,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://faybrink.github.io/relocation.html</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://faybrink.github.io/bellaire-westbury-braeswood.html</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -500,25 +494,37 @@
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-travel-nurses-buying-houston.html</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-rent-vs-buy-medical-professionals.html</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-houston-traffic-medical-professionals.html</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-luxury-homes-houston-hospitals.html</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://faybrink.github.io/blog-day-sleeping-houston-neighborhoods.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://faybrink.github.io/blog-investment-properties-medical-professionals.html</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
