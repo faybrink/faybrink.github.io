@@ -589,12 +589,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://faybrink.github.io/blog-houston-market-retro-summer-2026.html</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://faybrink.github.io/blog-houston-market-retro-spring-2022.html</loc>
     <lastmod>2022-10-18</lastmod>
     <changefreq>yearly</changefreq>
@@ -686,13 +680,13 @@
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-houston-market-retro-winter-2025-2026.html</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-06-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-houston-market-retro-spring-2026.html</loc>
-    <lastmod>2026-08-04</lastmod>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
