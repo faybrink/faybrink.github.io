@@ -279,14 +279,16 @@
   function initMap() {
     if (typeof L === 'undefined') { return; }
     var map = L.map('metro-map', {scrollWheelZoom: false}).setView([29.92, -95.52], 9);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+
+    var tilesOk = false;
+    var tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
       maxZoom: 19,
       subdomains: 'abcd',
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-    }).addTo(map);
-
-    var tilesOk = false;
-    map.on('tileload', function() { tilesOk = true; });
+    });
+    tiles.on('load', function() { tilesOk = true; });
+    tiles.on('tileload', function() { tilesOk = true; });
+    tiles.addTo(map);
     setTimeout(function() {
       if (!tilesOk) {
         var n = document.getElementById('map-tilenote');
