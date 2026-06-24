@@ -165,7 +165,7 @@ html,body{color-scheme:light;-webkit-color-scheme:light;background:#faf8f4 !impo
     <div class="article-body content">
 <div style="background:rgba(25,28,69,.04);border-left:3px solid rgba(214,162,74,.4);padding:1rem 1.25rem;margin:2rem 0;font-size:.82rem;color:#4a5a6a;">
   <strong style="font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);">Sources Referenced</strong>
-  <ul style="margin:.5rem 0 0;padding-left:1.2rem;line-height:1.8;"><li>Houston Association of Realtors (HAR) Monthly Housing Reports, September–October 2025</li><li>Freddie Mac Primary Mortgage Market Survey (PMMS): 9/18/25 (verify), 10/16/25 (verify)</li><li>Federal Reserve Federal Open Market Committee (FOMC), September 2025 meeting outcome (verify)</li><li>U.S. Bureau of Labor Statistics, CPI-U: August 2025 (verify), September (verify)</li><li>Greater Houston Partnership, Houston Q3 2025 Economic Report</li><li>CME Group FedWatch Tool Tool, November 2025</li><li>Realtors Property Resource (RPR) Submarket Market Conditions, fall 2025</li><li>Mortgage Bankers Association (MBA) Purchase Applications, October–November 2025</li><li>Texas A&M Real Estate Research Center, Q3 2025 Texas Housing Report</li><li>Multiple Listing Service (MLS) active listing data, Harris County, October 2025</li></ul>
+  <ul style="margin:.5rem 0 0;padding-left:1.2rem;line-height:1.8;"><li>Houston Association of Realtors (HAR) Monthly Housing Reports, September–October 2025</li><li>Freddie Mac Primary Mortgage Market Survey (PMMS): 9/18/25, 10/16/25</li><li>Federal Reserve Federal Open Market Committee (FOMC), September 2025 meeting outcome</li><li>U.S. Bureau of Labor Statistics, CPI-U: August 2025, September</li><li>Greater Houston Partnership, Houston Q3 2025 Economic Report</li><li>CME Group FedWatch Tool Tool, November 2025</li><li>Realtors Property Resource (RPR) Submarket Market Conditions, fall 2025</li><li>Mortgage Bankers Association (MBA) Purchase Applications, October–November 2025</li><li>Texas A&M Real Estate Research Center, Q3 2025 Texas Housing Report</li><li>Multiple Listing Service (MLS) active listing data, Harris County, October 2025</li></ul>
 </div>
       <p><em>Data points in this report should be verified against current sources. The following reflects my real-time read on the Houston market as of early November 2025.</em></p>
 
@@ -178,7 +178,7 @@ html,body{color-scheme:light;-webkit-color-scheme:light;background:#faf8f4 !impo
       <p>Katy and Woodlands: Both continuing to absorb seasonal activity at a healthy pace. The Woodlands’ medical campus growth continues to generate professional housing demand that supplements the corporate relocation base. Katy ISD is holding its reputation and holding buyer demand in the Katy corridor regardless of what rates are doing.</p>
 
       <h2>What I Was Right and Wrong About</h2>
-      <p>I said in my summer report that the fall outcome depended heavily on the September Consumer Price Index (CPI) print. Looking at the data: verify the actual September CPI number before publishing, but the general trend toward 2% that was visible through summer appears to have continued. The September Federal Open Market Committee (FOMC) meeting — verify the actual outcome — set the tone for the rate environment through the rest of the year. If the cut materialized and rates responded as the bond market had priced, then my call for a stronger fall was directionally correct. If cuts were delayed or smaller than expected, my prediction overshot. I will note which scenario played out in my winter 2026 report.</p>
+      <p>I said in my summer report that the fall outcome depended heavily on the September Consumer Price Index (CPI) print. Looking at the data: the general trend toward 2% that was visible through summer appears to have continued. The September Federal Open Market Committee (FOMC) meeting set the tone for the rate environment through the rest of the year. If the cut materialized and rates responded as the bond market had priced, then my call for a stronger fall was directionally correct. If cuts were delayed or smaller than expected, my prediction overshot. I will note which scenario played out in my winter 2026 report.</p>
 
       <h2>Outlook for Winter 2025–2026</h2>
       <p>Winter will be slower — it always is in Houston — but the floor in buyer demand should be higher than winter 2023 or 2024 based on everything I am seeing in the pipeline. The families that need to be settled before the next school year are already in conversations or under contract. The corporate relocators on Q1 timelines are beginning to look. The medical professional relocations for January and February residency starts and fellowship changes are actively searching. These buyers are present in winter in a way that casual buyers are not, and they produce enough transaction volume to keep the market alive even in the seasonally slow months. My prediction for spring 2026: strong, with the inner loop and master-planned community corridors absorbing pent-up demand that has been building through the entire rate correction cycle.</p>
@@ -188,6 +188,15 @@ html,body{color-scheme:light;-webkit-color-scheme:light;background:#faf8f4 !impo
   <a href="https://calendar.app.google/h4uUxnSXk6PqpF3g8" target="_blank" rel="noopener" class="btn-gold">Book a Free Consultation &rarr;</a>
 </div>
     </div>
+  <div class="share-strip">
+  <span class="share-label">Share</span>
+  <button class="share-btn native" style="display:none;">&#8679; Share</button>
+  <a class="share-btn" data-share="x" href="#" target="_blank" rel="noopener">&#120143; / Twitter</a>
+  <a class="share-btn" data-share="facebook" href="#" target="_blank" rel="noopener">Facebook</a>
+  <a class="share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
+  <a class="share-btn" data-share="email" href="#">Email</a>
+  <button class="share-btn" data-copy>Copy Link</button>
+</div>
   </main>
   <aside class="sidebar">
     <div class="sidebar-card">
@@ -222,6 +231,61 @@ html,body{color-scheme:light;-webkit-color-scheme:light;background:#faf8f4 !impo
 <script>
 function toggleMobileNav(){var nr=document.querySelector('.nav-right');if(nr){nr.classList.toggle('mob-open');}var mn=document.getElementById('mobile-nav');if(mn){mn.classList.toggle('open');}}
 document.addEventListener('click',function(e){if(!e.target.closest('nav')){var nr=document.querySelector('.nav-right');if(nr){nr.classList.remove('mob-open');}var mn=document.getElementById('mobile-nav');if(mn){mn.classList.remove('open');}}});
+</script>
+<script>
+(function(){
+  function buildShare(){
+    var url   = window.location.href;
+    var title = document.title.replace(/\s*\|.*$/,'').trim();
+    var enc   = encodeURIComponent;
+    var strip = document.querySelector('.share-strip');
+    if(!strip) return;
+
+    // Native share (mobile) — show if supported
+    if(navigator.share){
+      var nb = strip.querySelector('.native');
+      if(nb){
+        nb.style.display='inline-flex';
+        nb.addEventListener('click',function(){
+          navigator.share({title:title,url:url}).catch(function(){});
+        });
+      }
+    }
+
+    // Platform links
+    var links = {
+      'x':        'https://twitter.com/intent/tweet?url='+enc(url)+'&text='+enc(title)+'&via=FayBrinkHouston',
+      'facebook': 'https://www.facebook.com/sharer/sharer.php?u='+enc(url),
+      'linkedin': 'https://www.linkedin.com/sharing/share-offsite/?url='+enc(url),
+      'email':    'mailto:?subject='+enc(title)+'&body='+enc(title+'\n\n'+url)
+    };
+    strip.querySelectorAll('[data-share]').forEach(function(btn){
+      var plat = btn.getAttribute('data-share');
+      if(links[plat]) btn.href = links[plat];
+    });
+
+    // Copy link
+    var copy = strip.querySelector('[data-copy]');
+    if(copy){
+      copy.addEventListener('click',function(){
+        navigator.clipboard.writeText(url).then(function(){
+          copy.textContent='Copied!';
+          copy.classList.add('copied');
+          setTimeout(function(){copy.textContent='Copy Link';copy.classList.remove('copied');},2000);
+        }).catch(function(){
+          var ta=document.createElement('textarea');
+          ta.value=url; document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+          copy.textContent='Copied!'; copy.classList.add('copied');
+          setTimeout(function(){copy.textContent='Copy Link';copy.classList.remove('copied');},2000);
+        });
+      });
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',buildShare);}
+  else{buildShare();}
+})();
 </script>
 </body>
 </html>

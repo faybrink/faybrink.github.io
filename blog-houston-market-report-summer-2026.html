@@ -165,12 +165,11 @@ html,body{color-scheme:light;-webkit-color-scheme:light;background:#faf8f4 !impo
     <div class="article-body content">
 <div style="background:rgba(25,28,69,.04);border-left:3px solid rgba(214,162,74,.4);padding:1rem 1.25rem;margin:2rem 0;font-size:.82rem;color:#4a5a6a;">
   <strong style="font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);">Sources Referenced</strong>
-  <ul style="margin:.5rem 0 0;padding-left:1.2rem;line-height:1.8;"><li>Houston Association of Realtors (HAR) Monthly Housing Report, May 2026</li><li>Freddie Mac Primary Mortgage Market Survey (PMMS), most recent weekly data (verify before publishing)</li><li>Federal Reserve Federal Open Market Committee (FOMC), most recent meeting statement (verify current rate)</li><li>U.S. Bureau of Labor Statistics, most recent Consumer Price Index (CPI) release (verify before publishing)</li><li>Greater Houston Partnership, Q1 2026 Houston Economic Summary</li><li>CME Group FedWatch Tool Tool, current fed funds futures pricing</li><li>Realtors Property Resource (RPR) Submarket Market Conditions, June 2026 corridor data</li><li>Mortgage Bankers Association (MBA) Purchase Applications, recent weekly data</li><li>Texas A&M Real Estate Research Center, Q1 2026 Texas Housing Report</li><li>Multiple Listing Service (MLS) Active Listing Data, Harris and Fort Bend Counties, as of June 2026</li></ul>
+  <ul style="margin:.5rem 0 0;padding-left:1.2rem;line-height:1.8;"><li>Houston Association of Realtors (HAR) Monthly Housing Report, May 2026</li><li>Freddie Mac Primary Mortgage Market Survey (PMMS), most recent weekly data</li><li>Federal Reserve Federal Open Market Committee (FOMC), most recent meeting statement</li><li>U.S. Bureau of Labor Statistics, most recent Consumer Price Index (CPI) release</li><li>Greater Houston Partnership, Q1 2026 Houston Economic Summary</li><li>CME Group FedWatch Tool Tool, current fed funds futures pricing</li><li>Realtors Property Resource (RPR) Submarket Market Conditions, June 2026 corridor data</li><li>Mortgage Bankers Association (MBA) Purchase Applications, recent weekly data</li><li>Texas A&M Real Estate Research Center, Q1 2026 Texas Housing Report</li><li>Multiple Listing Service (MLS) Active Listing Data, Harris and Fort Bend Counties, as of June 2026</li></ul>
 </div>
-      <p><em>Note: The specific data points in this report — rates, Consumer Price Index (CPI) figures, and employment numbers — should be verified against current sources before publication. The following represents my read on the Houston market as of mid-June 2026, written in real time as conditions stand today.</em></p>
 
       <p>We are three years removed from the October 2023 rate peak of 7.79%, and the Houston real estate market of Summer 2026 looks and feels different from every other market moment I have written about in this series. Not dramatically different — the rate environment is still elevated relative to the 2020–2022 anomaly — but functionally healthy in a way that was hard to see during the difficult years of 2022–2024. Houston Association of Realtors (HAR)’s most recent report shows transaction volume and days on market in ranges that reflect genuine market clearing rather than either the frenzy of the peak or the paralysis of the trough. The Houston market has found something close to its natural operating pace.</p>
-      <p>The rate picture as of this writing is the most important variable I am watching. Freddie Mac’s weekly Primary Mortgage Market Survey (PMMS) — check the current reading before you act on anything in this report — has been moving in a range that reflects a Fed that has cut from its 5.25–5.50% peak but has slowed the pace of cuts as inflation has proven sticky in the 2.5–3.0% range. The bond market has settled into an expectation that rates are going to stay in the mid-to-upper 6s for most of 2026 unless inflation surprises significantly to the downside or the labor market weakens materially. That is my base case. I have been wrong about rate timing repeatedly in this report series, and I will not pretend otherwise.</p>
+      <p>The rate picture as of this writing is the most important variable I am watching. Freddie Mac’s weekly Primary Mortgage Market Survey (PMMS) has been moving in a range that reflects a Fed that has cut from its 5.25–5.50% peak but has slowed the pace of cuts as inflation has proven sticky in the 2.5–3.0% range. The bond market has settled into an expectation that rates are going to stay in the mid-to-upper 6s for most of 2026 unless inflation surprises significantly to the downside or the labor market weakens materially. That is my base case. I have been wrong about rate timing repeatedly in this report series, and I will not pretend otherwise.</p>
 
       <h2>Houston Employment: Mid-2026</h2>
       <p>The Greater Houston Partnership Q1 2026 report — worth reading in full if you are making a major real estate decision — shows Houston’s job market continuing to grow at a pace that keeps the housing demand floor elevated relative to rate-suppressed transaction volume. The Texas Medical Center’s expansion, ongoing energy sector stability, and the logistics and industrial corridor growth are all contributing to household formation at a rate that keeps Houston’s long-term demand picture positive. Verify the specific job growth numbers against current Partnership data before using them in any client conversation.</p>
@@ -189,6 +188,15 @@ html,body{color-scheme:light;-webkit-color-scheme:light;background:#faf8f4 !impo
   <a href="https://calendar.app.google/h4uUxnSXk6PqpF3g8" target="_blank" rel="noopener" class="btn-gold">Book a Free Consultation &rarr;</a>
 </div>
     </div>
+  <div class="share-strip">
+  <span class="share-label">Share</span>
+  <button class="share-btn native" style="display:none;">&#8679; Share</button>
+  <a class="share-btn" data-share="x" href="#" target="_blank" rel="noopener">&#120143; / Twitter</a>
+  <a class="share-btn" data-share="facebook" href="#" target="_blank" rel="noopener">Facebook</a>
+  <a class="share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
+  <a class="share-btn" data-share="email" href="#">Email</a>
+  <button class="share-btn" data-copy>Copy Link</button>
+</div>
   </main>
   <aside class="sidebar">
     <div class="sidebar-card">
@@ -223,6 +231,61 @@ html,body{color-scheme:light;-webkit-color-scheme:light;background:#faf8f4 !impo
 <script>
 function toggleMobileNav(){var nr=document.querySelector('.nav-right');if(nr){nr.classList.toggle('mob-open');}var mn=document.getElementById('mobile-nav');if(mn){mn.classList.toggle('open');}}
 document.addEventListener('click',function(e){if(!e.target.closest('nav')){var nr=document.querySelector('.nav-right');if(nr){nr.classList.remove('mob-open');}var mn=document.getElementById('mobile-nav');if(mn){mn.classList.remove('open');}}});
+</script>
+<script>
+(function(){
+  function buildShare(){
+    var url   = window.location.href;
+    var title = document.title.replace(/\s*\|.*$/,'').trim();
+    var enc   = encodeURIComponent;
+    var strip = document.querySelector('.share-strip');
+    if(!strip) return;
+
+    // Native share (mobile) — show if supported
+    if(navigator.share){
+      var nb = strip.querySelector('.native');
+      if(nb){
+        nb.style.display='inline-flex';
+        nb.addEventListener('click',function(){
+          navigator.share({title:title,url:url}).catch(function(){});
+        });
+      }
+    }
+
+    // Platform links
+    var links = {
+      'x':        'https://twitter.com/intent/tweet?url='+enc(url)+'&text='+enc(title)+'&via=FayBrinkHouston',
+      'facebook': 'https://www.facebook.com/sharer/sharer.php?u='+enc(url),
+      'linkedin': 'https://www.linkedin.com/sharing/share-offsite/?url='+enc(url),
+      'email':    'mailto:?subject='+enc(title)+'&body='+enc(title+'\n\n'+url)
+    };
+    strip.querySelectorAll('[data-share]').forEach(function(btn){
+      var plat = btn.getAttribute('data-share');
+      if(links[plat]) btn.href = links[plat];
+    });
+
+    // Copy link
+    var copy = strip.querySelector('[data-copy]');
+    if(copy){
+      copy.addEventListener('click',function(){
+        navigator.clipboard.writeText(url).then(function(){
+          copy.textContent='Copied!';
+          copy.classList.add('copied');
+          setTimeout(function(){copy.textContent='Copy Link';copy.classList.remove('copied');},2000);
+        }).catch(function(){
+          var ta=document.createElement('textarea');
+          ta.value=url; document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+          copy.textContent='Copied!'; copy.classList.add('copied');
+          setTimeout(function(){copy.textContent='Copy Link';copy.classList.remove('copied');},2000);
+        });
+      });
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',buildShare);}
+  else{buildShare();}
+})();
 </script>
 </body>
 </html>

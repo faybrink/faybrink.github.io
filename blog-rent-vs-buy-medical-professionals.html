@@ -189,6 +189,15 @@
     <div class="tags" style="margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(214,162,74,.2);">
       <span class="tag">Rent vs Buy</span><span class="tag">Physician Mortgage</span><span class="tag">Houston Real Estate</span><span class="tag">Medical Relocation</span><span class="tag">First-Time Buyers</span>
     </div>
+  <div class="share-strip">
+  <span class="share-label">Share</span>
+  <button class="share-btn native" style="display:none;">&#8679; Share</button>
+  <a class="share-btn" data-share="x" href="#" target="_blank" rel="noopener">&#120143; / Twitter</a>
+  <a class="share-btn" data-share="facebook" href="#" target="_blank" rel="noopener">Facebook</a>
+  <a class="share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
+  <a class="share-btn" data-share="email" href="#">Email</a>
+  <button class="share-btn" data-copy>Copy Link</button>
+</div>
   </main>
   <aside class="sidebar">
     <div class="sidebar-card">
@@ -225,6 +234,61 @@
 <script>
 function toggleMobileNav(){var nr=document.querySelector('.nav-right');if(nr){nr.classList.toggle('mob-open');}var mn=document.getElementById('mobile-nav');if(mn){mn.classList.toggle('open');}}
 document.addEventListener('click',function(e){if(!e.target.closest('nav')){var nr=document.querySelector('.nav-right');if(nr){nr.classList.remove('mob-open');}var mn=document.getElementById('mobile-nav');if(mn){mn.classList.remove('open');}}});
+</script>
+<script>
+(function(){
+  function buildShare(){
+    var url   = window.location.href;
+    var title = document.title.replace(/\s*\|.*$/,'').trim();
+    var enc   = encodeURIComponent;
+    var strip = document.querySelector('.share-strip');
+    if(!strip) return;
+
+    // Native share (mobile) — show if supported
+    if(navigator.share){
+      var nb = strip.querySelector('.native');
+      if(nb){
+        nb.style.display='inline-flex';
+        nb.addEventListener('click',function(){
+          navigator.share({title:title,url:url}).catch(function(){});
+        });
+      }
+    }
+
+    // Platform links
+    var links = {
+      'x':        'https://twitter.com/intent/tweet?url='+enc(url)+'&text='+enc(title)+'&via=FayBrinkHouston',
+      'facebook': 'https://www.facebook.com/sharer/sharer.php?u='+enc(url),
+      'linkedin': 'https://www.linkedin.com/sharing/share-offsite/?url='+enc(url),
+      'email':    'mailto:?subject='+enc(title)+'&body='+enc(title+'\n\n'+url)
+    };
+    strip.querySelectorAll('[data-share]').forEach(function(btn){
+      var plat = btn.getAttribute('data-share');
+      if(links[plat]) btn.href = links[plat];
+    });
+
+    // Copy link
+    var copy = strip.querySelector('[data-copy]');
+    if(copy){
+      copy.addEventListener('click',function(){
+        navigator.clipboard.writeText(url).then(function(){
+          copy.textContent='Copied!';
+          copy.classList.add('copied');
+          setTimeout(function(){copy.textContent='Copy Link';copy.classList.remove('copied');},2000);
+        }).catch(function(){
+          var ta=document.createElement('textarea');
+          ta.value=url; document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+          copy.textContent='Copied!'; copy.classList.add('copied');
+          setTimeout(function(){copy.textContent='Copy Link';copy.classList.remove('copied');},2000);
+        });
+      });
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',buildShare);}
+  else{buildShare();}
+})();
 </script>
 </body>
 </html>
