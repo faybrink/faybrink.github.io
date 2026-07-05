@@ -1959,6 +1959,23 @@ function toggleFaq(btn) {
   document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
   if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
 }
+function expandChapterFromHash() {
+  const hash = window.location.hash;
+  const m = hash.match(/^#ch-(\d+)$/);
+  if (!m) return;
+  const num = m[1];
+  const body = document.getElementById('body-' + num);
+  if (!body || body.classList.contains('expanded')) return;
+  toggleChapter(num);
+  const card = document.getElementById('ch-' + num);
+  if (card) setTimeout(function(){ card.scrollIntoView({behavior:'instant',block:'start'}); }, 0);
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', expandChapterFromHash);
+} else {
+  expandChapterFromHash();
+}
+window.addEventListener('hashchange', expandChapterFromHash);
 </script>
 <script>
 (function(){
