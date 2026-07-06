@@ -3,7 +3,7 @@ Official website of Fay Brink — Luxury Houston Realtor, Renaissance Premier Re
 
 Hi there, I'm Fay Brink 👋
 
-About Me 🚀
+About Me 🚀 
 
 I'm a real estate professional in Houston, TX, focused on new construction homes, buyer education, and content-driven marketing systems that help people make confident home decisions.
 
