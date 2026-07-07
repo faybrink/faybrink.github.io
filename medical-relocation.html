@@ -17,6 +17,7 @@
 <link rel="manifest" href="site.webmanifest"/>
 <meta name="theme-color" content="#191C45"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <script type="application/ld+json">
 {
@@ -233,6 +234,28 @@
 .dropdown a:hover{opacity:1;color:var(--gold);background:rgba(214,162,74,0.06);}
 nav{gap:1rem;flex-wrap:wrap;}
 @media(max-width:760px){.nav-links{display:none !important;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--navy);padding:0.75rem 5vw 1rem;border-top:1px solid rgba(214,162,74,0.25);z-index:998;box-shadow:0 8px 24px rgba(0,0,0,0.35);list-style:none;margin:0;}.nav-links.mob-open{display:flex !important;}.nav-links>li{width:100%;border-bottom:1px solid rgba(255,255,255,0.07);}.nav-links>li>a,.nav-links>li>span{display:block;padding:0.65rem 0;font-size:0.75rem;width:100%;}.dropdown{position:static;display:none;background:rgba(0,0,0,0.15);border:none;padding:0;}.has-dropdown:hover .dropdown{display:none;}.has-dropdown.mob-expanded .dropdown{display:block;}}
+
+  .map-wrap{max-width:1080px;margin:0 auto;padding:2.5rem 6vw 4rem;}
+  .map-head{text-align:center;margin-bottom:1.5rem;}
+  .map-frame{position:relative;border-top:3px solid var(--gold);box-shadow:0 14px 44px rgba(25,28,69,0.20);border-radius:4px;overflow:hidden;}
+  #area-map{width:100%;height:480px;background:#dfe5ea;}
+  #med-map{width:100%;height:480px;background:#dfe5ea;}
+  @media(max-width:700px){#med-map{height:400px;}}
+  @media(max-width:700px){#area-map{height:400px;}}
+  #map-tilenote{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;text-align:center;padding:1.5rem;background:linear-gradient(135deg,rgba(25,28,69,0.92),rgba(17,19,47,0.92));z-index:500;}
+  #map-tilenote span{font-family:'Cinzel',serif;color:var(--cream);font-size:0.95rem;letter-spacing:0.03em;line-height:1.5;max-width:420px;}
+  #map-tilenote small{font-family:'Raleway',sans-serif;color:var(--muted);font-size:0.78rem;line-height:1.6;max-width:420px;}
+  .map-cap{text-align:center;font-size:0.8rem;color:#5a5f70;margin-top:0.9rem;font-style:italic;font-family:'Cormorant Garamond',serif;}
+  .fay-pin{background:var(--gold);border:2.5px solid #fff;border-radius:50%;box-shadow:0 0 0 2px rgba(25,28,69,0.55),0 3px 8px rgba(0,0,0,0.4);}
+  .leaflet-tooltip.fay-tip{background:transparent;border:none;box-shadow:none;color:var(--navy);font-family:'Cinzel',serif;font-weight:600;font-size:0.76rem;letter-spacing:0.02em;text-shadow:0 0 4px #fff,0 0 4px #fff,0 0 7px #fff;padding:0;}
+  .leaflet-tooltip.fay-tip::before{display:none;}
+  .leaflet-popup-content-wrapper{background:var(--navy);color:var(--cream);border-radius:4px;border-top:3px solid var(--gold);box-shadow:0 6px 24px rgba(25,28,69,0.4);}
+  .leaflet-popup-content{margin:0.85rem 1.1rem;font-family:'Raleway',sans-serif;}
+  .leaflet-popup-content strong{font-family:'Cinzel',serif;color:var(--cream);font-size:0.95rem;letter-spacing:0.02em;display:block;margin-bottom:0.35rem;}
+  .leaflet-popup-content a{color:var(--gold);text-decoration:none;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;}
+  .leaflet-popup-content a:hover{color:var(--gold-light);}
+  .leaflet-popup-tip{background:var(--navy);}
+  .leaflet-container a.leaflet-popup-close-button{color:var(--muted);}
 </style>
 </head>
 <body>
@@ -423,6 +446,20 @@ nav{gap:1rem;flex-wrap:wrap;}
   </div>
 </section>
 
+<div class="map-wrap">
+  <div class="map-head">
+    <p class="sec-eyebrow">See It On The Map</p>
+    <h2 class="sec-title" style="margin-bottom:0;">Where Medical Professionals Actually Live</h2>
+    <p style="text-align:center;color:#4a5a6a;font-size:.92rem;max-width:680px;margin:.8rem auto 0;">From the closest-in Medical Center-adjacent neighborhoods to the master-planned communities in Pearland and Sugar Land that pull a different kind of commuter &mdash; tap any pin for the guide.</p>
+  </div>
+  <div class="map-frame">
+    <div id="med-map"></div>
+    <div id="map-tilenote"><span>The terrain map is hidden in this preview window</span><small>This preview blocks external map images. The full interactive terrain map loads on your live site and when you open this file in a browser.</small></div>
+  </div>
+  <p class="map-cap">The Texas Medical Center and the neighborhoods and communities that feed it. Pan and zoom to explore. Map data &copy; OpenStreetMap contributors &middot; tiles &copy; CARTO.</p>
+</div>
+
+
 <!-- ── COMMUTE REALITIES ──────────────────────────────────────────────────── -->
 <section class="commute-section">
   <h2>Commute Realities Nobody Puts in a Listing</h2>
@@ -513,6 +550,34 @@ nav{gap:1rem;flex-wrap:wrap;}
     <a href="med-center-museum-district.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(214,162,74,.25);padding:1.1rem 1.2rem;text-decoration:none;">
       <p style="font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 .4rem;">Corridor Guide</p>
       <p style="color:var(--cream);font-size:.88rem;margin:0;line-height:1.45;">Medical Center &amp; Museum District &rarr;</p>
+    </a>
+    <a href="southgate.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(214,162,74,.25);padding:1.1rem 1.2rem;text-decoration:none;">
+      <p style="font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 .4rem;">Neighborhood Guide</p>
+      <p style="color:var(--cream);font-size:.88rem;margin:0;line-height:1.45;">Southgate &rarr;</p>
+    </a>
+    <a href="southampton.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(214,162,74,.25);padding:1.1rem 1.2rem;text-decoration:none;">
+      <p style="font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 .4rem;">Neighborhood Guide</p>
+      <p style="color:var(--cream);font-size:.88rem;margin:0;line-height:1.45;">Southampton &rarr;</p>
+    </a>
+    <a href="west-university.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(214,162,74,.25);padding:1.1rem 1.2rem;text-decoration:none;">
+      <p style="font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 .4rem;">Neighborhood Guide</p>
+      <p style="color:var(--cream);font-size:.88rem;margin:0;line-height:1.45;">West University Place &rarr;</p>
+    </a>
+    <a href="braes-heights.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(214,162,74,.25);padding:1.1rem 1.2rem;text-decoration:none;">
+      <p style="font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 .4rem;">Neighborhood Guide</p>
+      <p style="color:var(--cream);font-size:.88rem;margin:0;line-height:1.45;">Braes Heights &rarr;</p>
+    </a>
+    <a href="willow-meadows.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(214,162,74,.25);padding:1.1rem 1.2rem;text-decoration:none;">
+      <p style="font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 .4rem;">Neighborhood Guide</p>
+      <p style="color:var(--cream);font-size:.88rem;margin:0;line-height:1.45;">Willow Meadows &rarr;</p>
+    </a>
+    <a href="willowbend.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(214,162,74,.25);padding:1.1rem 1.2rem;text-decoration:none;">
+      <p style="font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 .4rem;">Neighborhood Guide</p>
+      <p style="color:var(--cream);font-size:.88rem;margin:0;line-height:1.45;">Willowbend &rarr;</p>
+    </a>
+    <a href="meyerland.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(214,162,74,.25);padding:1.1rem 1.2rem;text-decoration:none;">
+      <p style="font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 .4rem;">Neighborhood Guide</p>
+      <p style="color:var(--cream);font-size:.88rem;margin:0;line-height:1.45;">Meyerland &rarr;</p>
     </a>
     <a href="memorial-energy-corridor.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(214,162,74,.25);padding:1.1rem 1.2rem;text-decoration:none;">
       <p style="font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 .4rem;">Corridor Guide</p>
@@ -619,6 +684,43 @@ document.addEventListener('click',function(e){
     span.parentElement.classList.toggle('mob-expanded');
   }
 });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin=""></script>
+<script>
+(function(){
+  function initMedMap(){
+    if(typeof L==='undefined'){return;}
+    var map=L.map('med-map',{scrollWheelZoom:false}).setView([29.66, -95.42],10);
+    var tiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);
+    var ok=false; tiles.on('load',function(){ok=true;}); tiles.on('tileload',function(){ok=true;});
+    setTimeout(function(){if(!ok){var n=document.getElementById('map-tilenote');if(n)n.style.display='flex';}},4500);
+    var pin=L.divIcon({className:'fay-pin',iconSize:[18,18],iconAnchor:[9,9]});
+    var pins=[
+      {name:"Texas Medical Center",lat:29.7070,lng:-95.4013,dir:"top",url:"texas-medical-center-real-estate.html",note:"106,000+ employees. The center of gravity for this whole map."},
+      {name:"Southgate",lat:29.7186,lng:-95.4066,dir:"right",url:"southgate.html",note:"Five to ten minutes to TMC."},
+      {name:"Southampton",lat:29.7189,lng:-95.4126,dir:"top",url:"southampton.html",note:"Roughly a 10-minute commute, private security patrol."},
+      {name:"West University",lat:29.7180,lng:-95.4310,dir:"left",url:"west-university.html",note:"Its own city, top-rated schools, 5-10 min to TMC."},
+      {name:"Museum District",lat:29.7233,lng:-95.3903,dir:"right",url:"med-center-museum-district.html",note:"Walkable, culture-forward, adjacent to TMC."},
+      {name:"Bellaire, Westbury & Braeswood",lat:29.7057,lng:-95.4588,dir:"bottom",url:"bellaire-westbury-braeswood.html",note:"Strong HISD campuses, established value."},
+      {name:"Braes Heights",lat:29.7057,lng:-95.4358,dir:"top",url:"braes-heights.html",note:"Family-first, Mark Twain Elementary."},
+      {name:"Midtown & Montrose",lat:29.7420,lng:-95.3850,dir:"right",url:"heights-montrose-midtown.html",note:"Walkability over drive time \u2014 popular with residents and fellows."},
+      {name:"Willow Meadows",lat:29.6851,lng:-95.4682,dir:"left",url:"willow-meadows.html",note:"Ranch homes, more house for the money."},
+      {name:"Willowbend",lat:29.6795,lng:-95.4640,dir:"bottom",url:"willowbend.html",note:"Established, community-anchored, Westbury HS zoning."},
+      {name:"Meyerland",lat:29.6871,lng:-95.4780,dir:"left",url:"meyerland.html",note:"Top-rated schools, rebuilt and flood-mitigated since Harvey."},
+      {name:"Sugar Land & Missouri City",lat:29.6200,lng:-95.6350,dir:"left",url:"sugar-land-missouri-city.html",note:"Fort Bend ISD draw \u2014 a longer commute traded for space and schools."},
+      {name:"Pearland",lat:29.5630,lng:-95.2860,dir:"bottom",url:"pearland-friendswood.html",note:"South of TMC via TX-288 \u2014 newer construction, Pearland ISD."}
+    ];
+    var bounds=[];
+    pins.forEach(function(c){
+      var m=L.marker([c.lat,c.lng],{icon:pin}).addTo(map);
+      m.bindTooltip(c.name,{permanent:true,direction:c.dir,className:'fay-tip'});
+      m.bindPopup('<strong>'+c.name+'</strong><span style="color:rgba(250,233,193,0.85);font-size:0.8rem;">'+c.note+'</span><br><a href="'+c.url+'" style="margin-top:.4rem;display:inline-block;">View guide &rarr;</a>');
+      bounds.push([c.lat,c.lng]);
+    });
+    if(bounds.length>1){map.fitBounds(bounds,{padding:[45,45],maxZoom:11});}
+  }
+  if(document.readyState!=='loading'){initMedMap();}else{document.addEventListener('DOMContentLoaded',initMedMap);}
+})();
 </script>
 </body>
 </html>
