@@ -9,7 +9,7 @@ I'm a real estate professional in Houston, TX, focused on new construction homes
 
 I also use GitHub as a creative space to build and experiment with my personal brand site, SEO-driven content, and digital marketing tools for real estate.
 
-🌱 Currently learning: HTML/CSS, GitHub Pages, SEO + AEO + GEO content strategy, Chess 
+🌱 Currently learning: HTML/CSS, GitHub Pages, Analytics, SEO + AEO + GEO content strategy, Chess 
 🔭 Working on: A personal site for Houston new construction insights + marketing systems for model homes, relocation, divorce & luxury real estate
 🌍 Languages: English and art/design, beginner HTML/CSS, advanced Canva and Capcut
 📫 How to reach me: Fay.Brink@BlairRG.com
