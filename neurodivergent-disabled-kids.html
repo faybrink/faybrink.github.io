@@ -17,7 +17,6 @@
 <link rel="manifest" href="site.webmanifest"/>
 <meta name="theme-color" content="#191C45"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin=""/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <script type="application/ld+json">
 {
@@ -239,23 +238,9 @@ nav{gap:1rem;flex-wrap:wrap;}
   .map-head{text-align:center;margin-bottom:1.5rem;}
   .map-frame{position:relative;border-top:3px solid var(--gold);box-shadow:0 14px 44px rgba(25,28,69,0.20);border-radius:4px;overflow:hidden;}
   #area-map{width:100%;height:480px;background:#dfe5ea;}
-  #med-map{width:100%;height:480px;background:#dfe5ea;}
-  @media(max-width:700px){#med-map{height:400px;}}
   @media(max-width:700px){#area-map{height:400px;}}
-  #map-tilenote{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;text-align:center;padding:1.5rem;background:linear-gradient(135deg,rgba(25,28,69,0.92),rgba(17,19,47,0.92));z-index:500;}
-  #map-tilenote span{font-family:'Cinzel',serif;color:var(--cream);font-size:0.95rem;letter-spacing:0.03em;line-height:1.5;max-width:420px;}
-  #map-tilenote small{font-family:'Raleway',sans-serif;color:var(--muted);font-size:0.78rem;line-height:1.6;max-width:420px;}
   .map-cap{text-align:center;font-size:0.8rem;color:#5a5f70;margin-top:0.9rem;font-style:italic;font-family:'Cormorant Garamond',serif;}
   .fay-pin{background:var(--gold);border:2.5px solid #fff;border-radius:50%;box-shadow:0 0 0 2px rgba(25,28,69,0.55),0 3px 8px rgba(0,0,0,0.4);}
-  .leaflet-tooltip.fay-tip{background:transparent;border:none;box-shadow:none;color:var(--navy);font-family:'Cinzel',serif;font-weight:600;font-size:0.76rem;letter-spacing:0.02em;text-shadow:0 0 4px #fff,0 0 4px #fff,0 0 7px #fff;padding:0;}
-  .leaflet-tooltip.fay-tip::before{display:none;}
-  .leaflet-popup-content-wrapper{background:var(--navy);color:var(--cream);border-radius:4px;border-top:3px solid var(--gold);box-shadow:0 6px 24px rgba(25,28,69,0.4);}
-  .leaflet-popup-content{margin:0.85rem 1.1rem;font-family:'Raleway',sans-serif;}
-  .leaflet-popup-content strong{font-family:'Cinzel',serif;color:var(--cream);font-size:0.95rem;letter-spacing:0.02em;display:block;margin-bottom:0.35rem;}
-  .leaflet-popup-content a{color:var(--gold);text-decoration:none;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;}
-  .leaflet-popup-content a:hover{color:var(--gold-light);}
-  .leaflet-popup-tip{background:var(--navy);}
-  .leaflet-container a.leaflet-popup-close-button{color:var(--muted);}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJNYVFPQ66"></script>
@@ -557,43 +542,6 @@ document.addEventListener('click',function(e){
     span.parentElement.classList.toggle('mob-expanded');
   }
 });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin=""></script>
-<script>
-(function(){
-  function initMedMap(){
-    if(typeof L==='undefined'){return;}
-    var map=L.map('med-map',{scrollWheelZoom:false}).setView([29.66, -95.42],10);
-    var tiles=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);
-    var ok=false; tiles.on('load',function(){ok=true;}); tiles.on('tileload',function(){ok=true;});
-    setTimeout(function(){if(!ok){var n=document.getElementById('map-tilenote');if(n)n.style.display='flex';}},4500);
-    var pin=L.divIcon({className:'fay-pin',iconSize:[18,18],iconAnchor:[9,9]});
-    var pins=[
-      {name:"Texas Medical Center",lat:29.7070,lng:-95.4013,dir:"top",url:"texas-medical-center-real-estate.html",note:"106,000+ employees. The center of gravity for this whole map."},
-      {name:"Southgate",lat:29.7186,lng:-95.4066,dir:"right",url:"southgate.html",note:"Five to ten minutes to TMC."},
-      {name:"Southampton",lat:29.7189,lng:-95.4126,dir:"top",url:"southampton.html",note:"Roughly a 10-minute commute, private security patrol."},
-      {name:"West University",lat:29.7180,lng:-95.4310,dir:"left",url:"west-university.html",note:"Its own city, top-rated schools, 5-10 min to TMC."},
-      {name:"Museum District",lat:29.7233,lng:-95.3903,dir:"right",url:"med-center-museum-district.html",note:"Walkable, culture-forward, adjacent to TMC."},
-      {name:"Bellaire, Westbury & Braeswood",lat:29.7057,lng:-95.4588,dir:"bottom",url:"bellaire-westbury-braeswood.html",note:"Strong HISD campuses, established value."},
-      {name:"Braes Heights",lat:29.7057,lng:-95.4358,dir:"top",url:"braes-heights.html",note:"Family-first, Mark Twain Elementary."},
-      {name:"Midtown & Montrose",lat:29.7420,lng:-95.3850,dir:"right",url:"heights-montrose-midtown.html",note:"Walkability over drive time \u2014 popular with residents and fellows."},
-      {name:"Willow Meadows",lat:29.6851,lng:-95.4682,dir:"left",url:"willow-meadows.html",note:"Ranch homes, more house for the money."},
-      {name:"Willowbend",lat:29.6795,lng:-95.4640,dir:"bottom",url:"willowbend.html",note:"Established, community-anchored, Westbury HS zoning."},
-      {name:"Meyerland",lat:29.6871,lng:-95.4780,dir:"left",url:"meyerland.html",note:"Top-rated schools, rebuilt and flood-mitigated since Harvey."},
-      {name:"Sugar Land & Missouri City",lat:29.6200,lng:-95.6350,dir:"left",url:"sugar-land-missouri-city.html",note:"Fort Bend ISD draw \u2014 a longer commute traded for space and schools."},
-      {name:"Pearland",lat:29.5630,lng:-95.2860,dir:"bottom",url:"pearland-friendswood.html",note:"South of TMC via TX-288 \u2014 newer construction, Pearland ISD."}
-    ];
-    var bounds=[];
-    pins.forEach(function(c){
-      var m=L.marker([c.lat,c.lng],{icon:pin}).addTo(map);
-      m.bindTooltip(c.name,{permanent:true,direction:c.dir,className:'fay-tip'});
-      m.bindPopup('<strong>'+c.name+'</strong><span style="color:rgba(250,233,193,0.85);font-size:0.8rem;">'+c.note+'</span><br><a href="'+c.url+'" style="margin-top:.4rem;display:inline-block;">View guide &rarr;</a>');
-      bounds.push([c.lat,c.lng]);
-    });
-    if(bounds.length>1){map.fitBounds(bounds,{padding:[45,45],maxZoom:11});}
-  }
-  if(document.readyState!=='loading'){initMedMap();}else{document.addEventListener('DOMContentLoaded',initMedMap);}
-})();
 </script>
 </body>
 </html>
