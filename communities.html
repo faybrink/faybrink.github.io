@@ -52,7 +52,7 @@
     .corridor-guide-link{font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500;transition:color .3s;}
     .corridor-guide-link:hover{color:var(--navy);}
     .comm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;}
-    .comm-card{background:#fff;border:1px solid rgba(25,28,69,0.08);border-left:4px solid var(--gold);padding:1.5rem;transition:transform .25s,box-shadow .25s;}
+    .comm-card{background:#fff;border:1px solid rgba(25,28,69,0.08);border-left:4px solid var(--gold);padding:1.5rem;transition:transform .25s,box-shadow .25s;scroll-margin-top:6rem;}
     .comm-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(25,28,69,0.08);}
     .comm-name{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--navy);letter-spacing:0.03em;font-weight:500;margin-bottom:0.6rem;}
     .comm-desc{font-size:0.88rem;color:#33333f;line-height:1.7;margin-bottom:0.9rem;}
@@ -188,17 +188,17 @@ nav{gap:1rem;flex-wrap:wrap;}
         <a href="blog-living-in-katy-tx.html" class="corridor-guide-link">Read the Katy Area Guide →</a>
       </div>
       <div class="comm-grid">
-      <div class="comm-card">
+      <div class="comm-card" id="cinco-ranch">
         <h3 class="comm-name">Cinco Ranch</h3>
         <p class="comm-desc">The gold standard of Katy living — established, beautifully landscaped, with golf courses, private water parks, and mature tree-lined streets.</p>
         <p class="comm-schools"><span>Schools:</span> Katy ISD</p>
       </div>
-      <div class="comm-card">
+      <div class="comm-card" id="elyson">
         <h3 class="comm-name">Elyson</h3>
         <p class="comm-desc">A booming North Katy community with modern amenities, an on-site café, resort-style pools, and aggressive new-construction builder incentives.</p>
         <p class="comm-schools"><span>Schools:</span> Katy ISD</p>
       </div>
-      <div class="comm-card">
+      <div class="comm-card" id="cane-island">
         <h3 class="comm-name">Cane Island</h3>
         <p class="comm-desc">Luxury living just off I-10, known for custom homes, an exceptional community center, and a welcoming, resort-like atmosphere.</p>
         <p class="comm-schools"><span>Schools:</span> Katy ISD</p>
@@ -210,17 +210,17 @@ nav{gap:1rem;flex-wrap:wrap;}
         <a href="blog-living-in-cypress-tx.html" class="corridor-guide-link">Read the Cypress Area Guide →</a>
       </div>
       <div class="comm-grid">
-      <div class="comm-card">
+      <div class="comm-card" id="bridgeland">
         <h3 class="comm-name">Bridgeland</h3>
         <p class="comm-desc">One of the largest master-planned communities in the region — modern architecture, expansive lakes, kayaking, and miles of connected trails. A city within a city.</p>
         <p class="comm-schools"><span>Schools:</span> Cy-Fair ISD</p>
       </div>
-      <div class="comm-card">
+      <div class="comm-card" id="towne-lake">
         <h3 class="comm-name">Towne Lake</h3>
         <p class="comm-desc">Built around a 300-acre private recreational lake where residents can boat to waterfront dining. A boater's dream in Northwest Houston.</p>
         <p class="comm-schools"><span>Schools:</span> Cy-Fair ISD</p>
       </div>
-      <div class="comm-card">
+      <div class="comm-card" id="coles-crossing-fairfield">
         <h3 class="comm-name">Coles Crossing &amp; Fairfield</h3>
         <p class="comm-desc">Established, heavily wooded communities prized for their traditional neighborhood feel and exceptionally stable property values.</p>
         <p class="comm-schools"><span>Schools:</span> Cy-Fair ISD</p>
@@ -232,17 +232,17 @@ nav{gap:1rem;flex-wrap:wrap;}
         <a href="blog-living-in-fulshear-tx.html" class="corridor-guide-link">Read the Fulshear Area Guide →</a>
       </div>
       <div class="comm-grid">
-      <div class="comm-card">
+      <div class="comm-card" id="cross-creek-ranch">
         <h3 class="comm-name">Cross Creek Ranch</h3>
         <p class="comm-desc">One of the most beautifully landscaped communities in Texas — native wildlife, massive lakes, rolling hills, and world-class resort pools.</p>
         <p class="comm-schools"><span>Schools:</span> Katy ISD / Lamar CISD</p>
       </div>
-      <div class="comm-card">
+      <div class="comm-card" id="weston-lakes">
         <h3 class="comm-name">Weston Lakes</h3>
         <p class="comm-desc">A prestigious gated country-club community offering acreage, custom builds, and a private 18-hole championship golf course.</p>
         <p class="comm-schools"><span>Schools:</span> Lamar CISD</p>
       </div>
-      <div class="comm-card">
+      <div class="comm-card" id="fulbrook">
         <h3 class="comm-name">Fulbrook on Aleen's Creek</h3>
         <p class="comm-desc">Nature-forward and luxurious, ideal for buyers seeking a slightly more rustic, acreage-oriented lifestyle without sacrificing refinement.</p>
         <p class="comm-schools"><span>Schools:</span> Lamar CISD</p>
@@ -254,12 +254,12 @@ nav{gap:1rem;flex-wrap:wrap;}
         
       </div>
       <div class="comm-grid">
-      <div class="comm-card">
+      <div class="comm-card" id="the-woodlands-villages">
         <h3 class="comm-name">The Woodlands Villages</h3>
         <p class="comm-desc">A collection of forested villages offering master-planned luxury, walkable town centers, waterway taxis, and nationally ranked schools.</p>
         <p class="comm-schools"><span>Schools:</span> Conroe ISD / Tomball ISD</p>
       </div>
-      <div class="comm-card">
+      <div class="comm-card" id="creekside-park">
         <h3 class="comm-name">Creekside Park</h3>
         <p class="comm-desc">A sought-after Woodlands village blending nature preserves, parks, and proximity to the Grand Parkway for easy commuting.</p>
         <p class="comm-schools"><span>Schools:</span> Tomball ISD</p>
