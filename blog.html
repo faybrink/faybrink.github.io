@@ -134,6 +134,7 @@ nav{gap:1rem;flex-wrap:wrap;}
         <a href="communities.html">🏘️ Communities</a>
         <a href="builders.html">🏗️ Builders</a>
         <a href="blog.html?filter=market">📊 Market Reports &amp; Retrospectives</a>
+        <a href="https://fay.houstonhomehunters.com/seller/homeestimate/default" target="_blank" rel="noopener" style="color:var(--gold);opacity:1;">🧮 What's My Home Worth ↗</a>
       </div>
     </li>
     <li class="has-dropdown">
@@ -170,6 +171,10 @@ nav{gap:1rem;flex-wrap:wrap;}
   <button class="filter-btn" onclick="filterPosts('divorce', this)">Divorce</button>
   <button class="filter-btn" onclick="filterPosts('media', this)">Media</button>
   <button class="filter-btn" onclick="filterPosts('taxes', this)">Taxes</button>
+</div>
+
+<div id="market-valuation-banner" style="display:none;background:var(--navy);padding:1.1rem 6vw;text-align:center;">
+  <p style="font-family:'Cormorant Garamond',serif;color:#fff;font-size:1.02rem;margin:0;line-height:1.6;">Curious what these trends mean for <em>your</em> home specifically? <a href="https://fay.houstonhomehunters.com/seller/homeestimate/default" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700;text-decoration:underline;">Get an instant home value estimate</a> — opens in a new tab.</p>
 </div>
 
 <div class="posts-wrap">
@@ -994,6 +999,8 @@ function filterPosts(cat, btn) {
   document.querySelectorAll('.post-card').forEach(card => {
     card.classList.toggle('hidden', cat !== 'all' && card.dataset.cat !== cat);
   });
+  var banner = document.getElementById('market-valuation-banner');
+  if (banner) banner.style.display = (cat === 'market') ? 'block' : 'none';
 }
 (function(){
   var params = new URLSearchParams(window.location.search);
