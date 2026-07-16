@@ -204,6 +204,244 @@ nav{gap:1rem;flex-wrap:wrap;}
   </div>
 </section>
 
+<!-- MORTGAGE CALCULATOR -->
+<section class="block" id="mortgage-calculator">
+  <p class="sec-eyebrow">Buyer Tool</p>
+  <h2 class="sec-title">Estimate Your Monthly Payment</h2>
+  <p class="sec-intro">Play with the numbers to get a feel for what a home in your target range actually costs each month. This is a planning tool, not a loan quote &mdash; your real rate and payment depend on your lender, credit, and the specific property, so treat this as a starting point for the conversation, not the final word.</p>
+
+  <div class="calc-card">
+    <div class="calc-grid">
+      <div class="calc-field">
+        <label for="calc-price">Purchase Price <span class="calc-info" title="The home's total purchase price before any down payment.">&#9432;</span></label>
+        <input type="text" inputmode="numeric" id="calc-price-num" class="calc-num" value="750,000">
+        <input type="range" id="calc-price" class="calc-slider" min="100000" max="3000000" step="5000" value="750000">
+      </div>
+      <div class="calc-field">
+        <label for="calc-down">Down Payment <span class="calc-info" title="How much you pay upfront. The rest is financed as your loan amount.">&#9432;</span></label>
+        <input type="text" inputmode="numeric" id="calc-down-num" class="calc-num" value="75,000">
+        <input type="range" id="calc-down" class="calc-slider" min="0" max="1500000" step="1000" value="75000">
+      </div>
+      <div class="calc-field">
+        <label for="calc-term">Term in Years <span class="calc-info" title="How many years you'll take to pay off the loan. 30 is most common; 15 means higher payments but far less interest overall.">&#9432;</span></label>
+        <input type="text" inputmode="numeric" id="calc-term-num" class="calc-num" value="30">
+        <input type="range" id="calc-term" class="calc-slider" min="10" max="30" step="1" value="30">
+      </div>
+      <div class="calc-field">
+        <label for="calc-rate">Interest Rate <span class="calc-info" title="Your annual mortgage interest rate. Ask your lender for a current, personalized rate.">&#9432;</span></label>
+        <input type="text" inputmode="decimal" id="calc-rate-num" class="calc-num" value="5.5">
+        <input type="range" id="calc-rate" class="calc-slider" min="3" max="9" step="0.125" value="5.5">
+      </div>
+      <div class="calc-field calc-field-tax">
+        <div class="calc-label-row">
+          <label for="calc-tax">Property Tax <span class="calc-unit">per year</span> <span class="calc-info" title="Annual property tax. Texas has no state income tax, so property taxes tend to run higher than the national average — this figure matters. Toggle to % if your listing shows a tax rate instead of a dollar amount.">&#9432;</span></label>
+          <div class="calc-toggle" role="group" aria-label="Property tax input mode">
+            <button type="button" class="calc-toggle-btn active" data-mode="dollar" id="calc-tax-mode-dollar">$</button>
+            <button type="button" class="calc-toggle-btn" data-mode="percent" id="calc-tax-mode-percent">%</button>
+          </div>
+        </div>
+        <input type="text" inputmode="decimal" id="calc-tax-num" class="calc-num" value="17,250">
+        <input type="range" id="calc-tax" class="calc-slider" min="0" max="30000" step="100" value="17250">
+      </div>
+      <div class="calc-field">
+        <label for="calc-ins">Home Insurance <span class="calc-unit">per year</span> <span class="calc-info" title="Annual homeowner's insurance. Houston-area rates run higher than much of the country due to flood and wind risk.">&#9432;</span></label>
+        <input type="text" inputmode="numeric" id="calc-ins-num" class="calc-num" value="2,000">
+        <input type="range" id="calc-ins" class="calc-slider" min="0" max="15000" step="100" value="2000">
+      </div>
+      <div class="calc-field">
+        <label for="calc-pmi">PMI (Monthly) <span class="calc-info" title="Private Mortgage Insurance, required by most lenders when your down payment is under 20%. Usually drops off once you reach 20% equity.">&#9432;</span></label>
+        <input type="text" inputmode="numeric" id="calc-pmi-num" class="calc-num" value="150">
+        <input type="range" id="calc-pmi" class="calc-slider" min="0" max="1000" step="10" value="150">
+      </div>
+    </div>
+
+    <div class="calc-results">
+      <p class="calc-results-label">Estimated Monthly Payment</p>
+      <div class="calc-total" id="calc-total">$0</div>
+      <div class="calc-breakdown">
+        <div class="calc-line"><span>Principal &amp; Interest</span><span id="calc-pi">$0</span></div>
+        <div class="calc-line"><span>Property Tax</span><span id="calc-taxmo">$0</span></div>
+        <div class="calc-line"><span>Home Insurance</span><span id="calc-insmo">$0</span></div>
+        <div class="calc-line"><span>PMI</span><span id="calc-pmimo">$0</span></div>
+      </div>
+      <p class="calc-loan-note" id="calc-loan-note"></p>
+    </div>
+  </div>
+
+  <p class="calc-cta-note">Ready to see what this looks like with a real, personalized rate? <a href="vendors.html" style="color:var(--gold);font-weight:600;">My preferred lenders</a> can run actual numbers with you, no obligation.</p>
+</section>
+
+<style>
+.calc-card{background:#fff;border:1px solid rgba(25,28,69,0.09);border-top:3px solid var(--gold);padding:2rem clamp(1.2rem,3vw,2.5rem);margin-top:1rem;}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.6rem 2rem;margin-bottom:1.8rem;}
+.calc-field label{display:block;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);font-weight:600;margin-bottom:0.45rem;}
+.calc-unit{text-transform:none;letter-spacing:0;color:var(--taupe);font-weight:400;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:0.85rem;}
+.calc-label-row{display:flex;align-items:center;justify-content:space-between;gap:0.6rem;margin-bottom:0.45rem;}
+.calc-label-row label{margin-bottom:0;flex:1;}
+.calc-toggle{display:flex;border:1px solid rgba(25,28,69,0.18);flex-shrink:0;}
+.calc-toggle-btn{background:var(--bg);border:none;color:var(--slate);font-size:0.68rem;font-weight:700;letter-spacing:0.04em;padding:0.25rem 0.55rem;cursor:pointer;font-family:'Raleway',sans-serif;transition:background .2s,color .2s;}
+.calc-toggle-btn:first-child{border-right:1px solid rgba(25,28,69,0.18);}
+.calc-toggle-btn.active{background:var(--navy);color:var(--cream);}
+.calc-info{cursor:help;color:var(--taupe);font-size:0.85em;}
+.calc-num{width:100%;font-family:'Cinzel',serif;font-size:1.05rem;color:var(--navy);border:1px solid rgba(25,28,69,0.15);background:var(--bg);padding:0.5rem 0.7rem;margin-bottom:0.6rem;box-sizing:border-box;}
+.calc-num:focus{outline:none;border-color:var(--gold);}
+.calc-slider{width:100%;-webkit-appearance:none;appearance:none;height:4px;background:rgba(25,28,69,0.12);border-radius:2px;outline:none;cursor:pointer;}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--navy);}
+.calc-slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--navy);}
+.calc-results{background:var(--navy);padding:1.8rem clamp(1.2rem,3vw,2.5rem);text-align:center;}
+.calc-results-label{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+.calc-total{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(2rem,5vw,2.8rem);color:var(--cream);margin-bottom:1.3rem;}
+.calc-breakdown{max-width:360px;margin:0 auto;text-align:left;border-top:1px solid rgba(214,162,74,0.25);padding-top:1rem;}
+.calc-line{display:flex;justify-content:space-between;font-size:0.85rem;color:var(--muted);padding:0.35rem 0;}
+.calc-line span:last-child{color:var(--cream);font-weight:500;}
+.calc-loan-note{font-size:0.72rem;color:var(--muted);margin-top:1rem;opacity:0.8;}
+.calc-cta-note{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--slate);margin-top:1.5rem;}
+@media(max-width:600px){.calc-grid{grid-template-columns:1fr 1fr;}}
+</style>
+
+<script>
+(function(){
+  var ids = ['price','down','term','rate','tax','ins','pmi'];
+  var sliders = {}, nums = {};
+  ids.forEach(function(id){
+    sliders[id] = document.getElementById('calc-'+id);
+    nums[id] = document.getElementById('calc-'+id+'-num');
+  });
+
+  var taxMode = 'dollar'; // 'dollar' or 'percent'
+  var taxBtnDollar = document.getElementById('calc-tax-mode-dollar');
+  var taxBtnPercent = document.getElementById('calc-tax-mode-percent');
+  var taxDollarBounds = { min: 0, max: 60000, step: 100 };
+  var taxPercentBounds = { min: 0, max: 5, step: 0.05 };
+
+  function parseNum(str){
+    var n = parseFloat(String(str).replace(/[^0-9.]/g, ''));
+    return isNaN(n) ? 0 : n;
+  }
+  function fmtMoney(n){
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+  function fmtInt(n){
+    return Math.round(n).toLocaleString('en-US');
+  }
+  function fmtPercent(n){
+    return (Math.round(n * 100) / 100).toString();
+  }
+
+  // Returns the current annual property tax in dollars, regardless of display mode.
+  function getAnnualTax(price){
+    if (taxMode === 'percent') {
+      return price * (parseNum(nums.tax.value) / 100);
+    }
+    return parseNum(nums.tax.value);
+  }
+
+  function calculate(){
+    var price = parseNum(nums.price.value);
+    var down = parseNum(nums.down.value);
+    var term = parseNum(nums.term.value) || 30;
+    var rate = parseNum(nums.rate.value);
+    var tax = getAnnualTax(price);
+    var ins = parseNum(nums.ins.value);
+    var pmi = parseNum(nums.pmi.value);
+
+    if (down > price) { down = price; }
+
+    var loanAmount = Math.max(price - down, 0);
+    var monthlyRate = (rate / 100) / 12;
+    var numPayments = term * 12;
+
+    var pi = 0;
+    if (loanAmount > 0 && numPayments > 0) {
+      if (monthlyRate > 0) {
+        var factor = Math.pow(1 + monthlyRate, numPayments);
+        pi = loanAmount * (monthlyRate * factor) / (factor - 1);
+      } else {
+        pi = loanAmount / numPayments;
+      }
+    }
+
+    var taxMo = tax / 12;
+    var insMo = ins / 12;
+    var total = pi + taxMo + insMo + pmi;
+
+    document.getElementById('calc-total').textContent = fmtMoney(total) + ' /mo';
+    document.getElementById('calc-pi').textContent = fmtMoney(pi);
+    document.getElementById('calc-taxmo').textContent = fmtMoney(taxMo);
+    document.getElementById('calc-insmo').textContent = fmtMoney(insMo);
+    document.getElementById('calc-pmimo').textContent = fmtMoney(pmi);
+    var taxSummary = taxMode === 'percent' ? ' (' + fmtPercent(parseNum(nums.tax.value)) + '% tax rate, ' + fmtMoney(tax) + '/yr)' : '';
+    document.getElementById('calc-loan-note').textContent = 'Based on a loan amount of ' + fmtMoney(loanAmount) + ' at ' + rate + '% over ' + term + ' years' + taxSummary + '.';
+  }
+
+  function setTaxMode(mode){
+    if (mode === taxMode) return;
+    var price = parseNum(nums.price.value);
+    var currentAnnualTax = getAnnualTax(price);
+
+    taxMode = mode;
+    if (mode === 'percent') {
+      taxBtnPercent.classList.add('active');
+      taxBtnDollar.classList.remove('active');
+      sliders.tax.min = taxPercentBounds.min;
+      sliders.tax.max = taxPercentBounds.max;
+      sliders.tax.step = taxPercentBounds.step;
+      var pct = price > 0 ? (currentAnnualTax / price) * 100 : 2.3;
+      pct = Math.max(taxPercentBounds.min, Math.min(taxPercentBounds.max, pct));
+      nums.tax.value = fmtPercent(pct);
+      sliders.tax.value = pct;
+    } else {
+      taxBtnDollar.classList.add('active');
+      taxBtnPercent.classList.remove('active');
+      sliders.tax.min = taxDollarBounds.min;
+      sliders.tax.max = taxDollarBounds.max;
+      sliders.tax.step = taxDollarBounds.step;
+      var dollars = Math.max(taxDollarBounds.min, Math.min(taxDollarBounds.max, currentAnnualTax));
+      nums.tax.value = fmtInt(dollars);
+      sliders.tax.value = dollars;
+    }
+    calculate();
+  }
+  taxBtnDollar.addEventListener('click', function(){ setTaxMode('dollar'); });
+  taxBtnPercent.addEventListener('click', function(){ setTaxMode('percent'); });
+
+  ids.forEach(function(id){
+    sliders[id].addEventListener('input', function(){
+      if (id === 'tax') {
+        nums.tax.value = taxMode === 'percent' ? fmtPercent(sliders.tax.value) : fmtInt(sliders.tax.value);
+      } else {
+        nums[id].value = (id === 'price' || id === 'down' || id === 'ins' || id === 'pmi')
+          ? fmtInt(sliders[id].value) : sliders[id].value;
+      }
+      if (id === 'price') {
+        var priceVal = parseNum(nums.price.value);
+        sliders.down.max = priceVal;
+      }
+      calculate();
+    });
+    nums[id].addEventListener('input', function(){
+      var val = parseNum(nums[id].value);
+      var min = parseFloat(sliders[id].min), max = parseFloat(sliders[id].max);
+      if (val >= min && val <= max) { sliders[id].value = val; }
+      calculate();
+    });
+    nums[id].addEventListener('blur', function(){
+      var val = parseNum(nums[id].value);
+      if (id === 'tax' && taxMode === 'percent') {
+        nums.tax.value = fmtPercent(val);
+      } else if (id === 'rate' || id === 'term') {
+        nums[id].value = val;
+      } else {
+        nums[id].value = fmtInt(val);
+      }
+      calculate();
+    });
+  });
+
+  calculate();
+})();
+</script>
+
 <!-- REEL / MOTION -->
 <section class="reel-band">
   <div class="reel-wrap">
