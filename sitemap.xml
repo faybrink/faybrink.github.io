@@ -715,6 +715,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://faybrink.github.io/blog-why-blair-realty-group.html</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://faybrink.github.io/blog-houston-market-report-spring-2022.html</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>yearly</changefreq>
@@ -1083,6 +1089,12 @@
   <url>
     <loc>https://faybrink.github.io/blog-houston-school-district-ratings-explained.html</loc>
     <lastmod>2025-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://faybrink.github.io/blog-faith-based-mortgage-options.html</loc>
+    <lastmod>2022-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
