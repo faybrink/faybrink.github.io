@@ -234,6 +234,14 @@ nav{gap:1rem;flex-wrap:wrap;}
         </div>
         <input type="text" inputmode="decimal" id="calc-tax-num" class="calc-num" value="17,250">
         <input type="range" id="calc-tax" class="calc-slider" min="0" max="30000" step="100" value="17250">
+        <div id="calc-homestead-wrap" style="display:none;margin-top:0.5rem;">
+          <label class="calc-radio-label" style="cursor:pointer;">
+            <input type="checkbox" id="calc-homestead" /> Homestead exemption (primary residence) <span class="calc-info" title="Texas' 2026 general homestead exemption removes $140,000 from your home's taxable value for school district taxes. Your city/county may offer an additional exemption (varies by jurisdiction, not included here) — check with your appraisal district for the exact figure.">&#9432;</span>
+          </label>
+          <label class="calc-radio-label" id="calc-over65-wrap" style="cursor:pointer;display:none;margin-top:0.3rem;">
+            <input type="checkbox" id="calc-over65" /> Age 65+ or disabled (additional $10,000 exemption)
+          </label>
+        </div>
       </div>
       <div class="calc-field">
         <label for="calc-ins">Home Insurance <span class="calc-unit">per year</span> <span class="calc-info" title="Annual homeowner's insurance. Houston-area rates run higher than much of the country due to flood and wind risk.">&#9432;</span></label>
@@ -307,6 +315,10 @@ nav{gap:1rem;flex-wrap:wrap;}
   var taxBtnPercent = document.getElementById('calc-tax-mode-percent');
   var taxDollarBounds = { min: 0, max: 60000, step: 100 };
   var taxPercentBounds = { min: 0, max: 5, step: 0.05 };
+  var homesteadEl = document.getElementById('calc-homestead');
+  var over65El = document.getElementById('calc-over65');
+  var homesteadWrap = document.getElementById('calc-homestead-wrap');
+  var over65Wrap = document.getElementById('calc-over65-wrap');
 
   function parseNum(str){
     var n = parseFloat(String(str).replace(/[^0-9.]/g, ''));
@@ -325,7 +337,12 @@ nav{gap:1rem;flex-wrap:wrap;}
   // Returns the current annual property tax in dollars, regardless of display mode.
   function getAnnualTax(price){
     if (taxMode === 'percent') {
-      return price * (parseNum(nums.tax.value) / 100);
+      var rate = parseNum(nums.tax.value) / 100;
+      var taxableValue = price;
+      if (homesteadEl.checked) {
+        taxableValue = Math.max(price - 140000 - (over65El.checked ? 10000 : 0), 0);
+      }
+      return taxableValue * rate;
     }
     return parseNum(nums.tax.value);
   }
@@ -364,7 +381,7 @@ nav{gap:1rem;flex-wrap:wrap;}
     document.getElementById('calc-taxmo').textContent = fmtMoney(taxMo);
     document.getElementById('calc-insmo').textContent = fmtMoney(insMo);
     document.getElementById('calc-pmimo').textContent = fmtMoney(pmi);
-    var taxSummary = taxMode === 'percent' ? ' (' + fmtPercent(parseNum(nums.tax.value)) + '% tax rate, ' + fmtMoney(tax) + '/yr)' : '';
+    var taxSummary = taxMode === 'percent' ? ' (' + fmtPercent(parseNum(nums.tax.value)) + '% tax rate, ' + fmtMoney(tax) + '/yr' + (homesteadEl.checked ? ', homestead exemption applied' : '') + ')' : '';
     document.getElementById('calc-loan-note').textContent = 'Based on a loan amount of ' + fmtMoney(loanAmount) + ' at ' + rate + '% over ' + term + ' years' + taxSummary + '.';
   }
 
@@ -394,10 +411,16 @@ nav{gap:1rem;flex-wrap:wrap;}
       nums.tax.value = fmtInt(dollars);
       sliders.tax.value = dollars;
     }
+    homesteadWrap.style.display = (mode === 'percent') ? 'block' : 'none';
     calculate();
   }
   taxBtnDollar.addEventListener('click', function(){ setTaxMode('dollar'); });
   taxBtnPercent.addEventListener('click', function(){ setTaxMode('percent'); });
+  homesteadEl.addEventListener('change', function(){
+    over65Wrap.style.display = homesteadEl.checked ? 'block' : 'none';
+    calculate();
+  });
+  over65El.addEventListener('change', calculate);
 
   ids.forEach(function(id){
     sliders[id].addEventListener('input', function(){
@@ -547,6 +570,12 @@ nav{gap:1rem;flex-wrap:wrap;}
         <label for="aff-tax">Property Tax <span class="calc-unit">% / yr</span> <span class="calc-info" title="Texas has no state income tax, so property taxes run higher than the national average &mdash; this figure matters a lot here.">&#9432;</span></label>
         <input type="text" inputmode="decimal" id="aff-tax-num" class="calc-num" value="2.3">
         <input type="range" id="aff-tax" class="calc-slider" min="0" max="4" step="0.05" value="2.3">
+        <label class="calc-radio-label" style="cursor:pointer;margin-top:0.5rem;">
+          <input type="checkbox" id="aff-homestead" /> Homestead exemption (primary residence) <span class="calc-info" title="Texas' 2026 general homestead exemption removes $140,000 from taxable value for school district taxes. City/county exemptions vary by jurisdiction and aren't included here.">&#9432;</span>
+        </label>
+        <label class="calc-radio-label" id="aff-over65-wrap" style="cursor:pointer;display:none;margin-top:0.3rem;">
+          <input type="checkbox" id="aff-over65" /> Age 65+ or disabled (additional $10,000 exemption)
+        </label>
       </div>
       <div class="calc-field">
         <label for="aff-ins">Home Insurance <span class="calc-unit">% / yr</span></label>
@@ -611,7 +640,11 @@ nav{gap:1rem;flex-wrap:wrap;}
     var k;
     if (r>0){ var f=Math.pow(1+r,nmo); k=(r*f)/(f-1); } else { k=1/nmo; }
     var A = (1-downPct/100)*k + (taxPct/100)/12 + (insPct/100)/12;
-    var price = A>0 ? Math.max((maxPITI - hoa)/A, 0) : 0;
+    var exemption = 0;
+    if (document.getElementById('aff-homestead').checked) {
+      exemption = 140000 + (document.getElementById('aff-over65').checked ? 10000 : 0);
+    }
+    var price = A>0 ? Math.max((maxPITI - hoa + exemption*(taxPct/100)/12)/A, 0) : 0;
     var loanAmt = price*(1-downPct/100);
     var downAmt = price*(downPct/100);
 
@@ -620,7 +653,7 @@ nav{gap:1rem;flex-wrap:wrap;}
     document.getElementById('aff-backmax').textContent = fmtMoney(grossMonthly*backRatio)+'/mo';
     document.getElementById('aff-loanamt').textContent = fmtMoney(loanAmt);
     document.getElementById('aff-downamt').textContent = fmtMoney(downAmt);
-    document.getElementById('aff-note').textContent = 'Based on the ' + dtiSelect.options[dtiSelect.selectedIndex].text + ' standard, whichever ratio is more restrictive for your numbers.';
+    document.getElementById('aff-note').textContent = 'Based on the ' + dtiSelect.options[dtiSelect.selectedIndex].text + ' standard, whichever ratio is more restrictive for your numbers.' + (exemption>0 ? ' Includes a $' + exemption.toLocaleString('en-US') + ' homestead exemption on taxable value.' : '');
   }
 
   ids.forEach(function(id){
@@ -641,6 +674,11 @@ nav{gap:1rem;flex-wrap:wrap;}
     });
   });
   dtiSelect.addEventListener('change', calculate);
+  document.getElementById('aff-homestead').addEventListener('change', function(){
+    document.getElementById('aff-over65-wrap').style.display = this.checked ? 'block' : 'none';
+    calculate();
+  });
+  document.getElementById('aff-over65').addEventListener('change', calculate);
   calculate();
 })();
 </script>
@@ -990,6 +1028,12 @@ nav{gap:1rem;flex-wrap:wrap;}
         <label for="fha-tax">Property Tax <span class="calc-unit">% / yr</span></label>
         <input type="text" inputmode="decimal" id="fha-tax-num" class="calc-num" value="2.3">
         <input type="range" id="fha-tax" class="calc-slider" min="0" max="4" step="0.05" value="2.3">
+        <label class="calc-radio-label" style="cursor:pointer;margin-top:0.5rem;">
+          <input type="checkbox" id="fha-homestead" /> Homestead exemption (primary residence) <span class="calc-info" title="Texas' 2026 general homestead exemption removes $140,000 from taxable value for school district taxes. City/county exemptions vary by jurisdiction and aren't included here.">&#9432;</span>
+        </label>
+        <label class="calc-radio-label" id="fha-over65-wrap" style="cursor:pointer;display:none;margin-top:0.3rem;">
+          <input type="checkbox" id="fha-over65" /> Age 65+ or disabled (additional $10,000 exemption)
+        </label>
       </div>
       <div class="calc-field">
         <label for="fha-ins">Home Insurance <span class="calc-unit">$ / yr</span></label>
@@ -1048,7 +1092,12 @@ nav{gap:1rem;flex-wrap:wrap;}
     var financedLoan = baseLoan+ufmipAmt;
     var pi = payment(financedLoan, rate, term);
     var amipMo = financedLoan*(amipPct/100)/12;
-    var taxMo = price*(taxPct/100)/12;
+    var exemption = 0;
+    if (document.getElementById('fha-homestead').checked) {
+      exemption = 140000 + (document.getElementById('fha-over65').checked ? 10000 : 0);
+    }
+    var taxableValue = Math.max(price - exemption, 0);
+    var taxMo = taxableValue*(taxPct/100)/12;
     var insMo = insYr/12;
     var hoaMo = hoaYr/12;
     var total = pi+amipMo+taxMo+insMo+hoaMo;
@@ -1059,7 +1108,7 @@ nav{gap:1rem;flex-wrap:wrap;}
     document.getElementById('fha-taxmo').textContent = fmtMoney(taxMo);
     document.getElementById('fha-insmo').textContent = fmtMoney(insMo);
     document.getElementById('fha-hoamo').textContent = fmtMoney(hoaMo);
-    document.getElementById('fha-note').textContent = 'Upfront MIP of ' + fmtMoney(ufmipAmt) + ' is financed into your loan, for a total loan amount of ' + fmtMoney(financedLoan) + '.';
+    document.getElementById('fha-note').textContent = 'Upfront MIP of ' + fmtMoney(ufmipAmt) + ' is financed into your loan, for a total loan amount of ' + fmtMoney(financedLoan) + '.' + (exemption>0 ? ' Property tax reflects a $' + exemption.toLocaleString('en-US') + ' homestead exemption.' : '');
   }
 
   ids.forEach(function(id){
@@ -1079,6 +1128,11 @@ nav{gap:1rem;flex-wrap:wrap;}
       calculate();
     });
   });
+  document.getElementById('fha-homestead').addEventListener('change', function(){
+    document.getElementById('fha-over65-wrap').style.display = this.checked ? 'block' : 'none';
+    calculate();
+  });
+  document.getElementById('fha-over65').addEventListener('change', calculate);
   calculate();
 })();
 </script>
@@ -1130,6 +1184,12 @@ nav{gap:1rem;flex-wrap:wrap;}
         <label for="va-tax">Property Tax <span class="calc-unit">% / yr</span></label>
         <input type="text" inputmode="decimal" id="va-tax-num" class="calc-num" value="2.3">
         <input type="range" id="va-tax" class="calc-slider" min="0" max="4" step="0.05" value="2.3">
+        <label class="calc-radio-label" style="cursor:pointer;margin-top:0.5rem;">
+          <input type="checkbox" id="va-homestead" /> Homestead exemption (primary residence) <span class="calc-info" title="Texas' 2026 general homestead exemption removes $140,000 from taxable value for school district taxes. City/county exemptions vary by jurisdiction and aren't included here.">&#9432;</span>
+        </label>
+        <label class="calc-radio-label" id="va-over65-wrap" style="cursor:pointer;display:none;margin-top:0.3rem;">
+          <input type="checkbox" id="va-over65" /> Age 65+ or disabled (additional $10,000 exemption)
+        </label>
       </div>
       <div class="calc-field">
         <label for="va-ins">Home Insurance <span class="calc-unit">$ / yr</span></label>
@@ -1191,7 +1251,12 @@ nav{gap:1rem;flex-wrap:wrap;}
     var feeAmt = baseLoan*(feePct/100);
     var financedLoan = baseLoan+feeAmt;
     var pi = payment(financedLoan, rate, term);
-    var taxMo = price*(taxPct/100)/12;
+    var exemption = 0;
+    if (document.getElementById('va-homestead').checked) {
+      exemption = 140000 + (document.getElementById('va-over65').checked ? 10000 : 0);
+    }
+    var taxableValue = Math.max(price - exemption, 0);
+    var taxMo = taxableValue*(taxPct/100)/12;
     var insMo = insYr/12;
     var total = pi+taxMo+insMo;
 
@@ -1200,9 +1265,10 @@ nav{gap:1rem;flex-wrap:wrap;}
     document.getElementById('va-taxmo').textContent = fmtMoney(taxMo);
     document.getElementById('va-insmo').textContent = fmtMoney(insMo);
     document.getElementById('va-fundingfee').textContent = isExempt ? 'Exempt' : fmtMoney(feeAmt)+' ('+feePct+'%)';
-    document.getElementById('va-note').textContent = isExempt
+    document.getElementById('va-note').textContent = (isExempt
       ? 'No monthly mortgage insurance, and the funding fee is waived due to disability compensation eligibility.'
-      : 'Funding fee of ' + feePct + '% is financed into your loan by default, for a total loan amount of ' + fmtMoney(financedLoan) + '. No monthly mortgage insurance either way.';
+      : 'Funding fee of ' + feePct + '% is financed into your loan by default, for a total loan amount of ' + fmtMoney(financedLoan) + '. No monthly mortgage insurance either way.')
+      + (exemption>0 ? ' Property tax reflects a $' + exemption.toLocaleString('en-US') + ' homestead exemption.' : '');
   }
 
   ids.forEach(function(id){
@@ -1224,6 +1290,11 @@ nav{gap:1rem;flex-wrap:wrap;}
   });
   useSelect.addEventListener('change', calculate);
   disSelect.addEventListener('change', calculate);
+  document.getElementById('va-homestead').addEventListener('change', function(){
+    document.getElementById('va-over65-wrap').style.display = this.checked ? 'block' : 'none';
+    calculate();
+  });
+  document.getElementById('va-over65').addEventListener('change', calculate);
   calculate();
 })();
 </script>
@@ -1681,7 +1752,7 @@ nav{gap:1rem;flex-wrap:wrap;}
       </div>
       <p class="calc-section-note">Annual Operating Expenses</p>
       <div class="calc-field">
-        <label for="rp-tax">Property Tax</label>
+        <label for="rp-tax">Property Tax <span class="calc-info" title="No homestead exemption is available here, since this calculator is for non-owner-occupied rental property &mdash; homestead exemptions only apply to your primary residence under Texas law. Enter the full, unexempted tax amount.">&#9432;</span></label>
         <input type="text" inputmode="numeric" id="rp-tax-num" class="calc-num" value="6,000">
         <input type="range" id="rp-tax" class="calc-slider" min="0" max="60000" step="100" value="6000">
       </div>
@@ -1842,7 +1913,7 @@ nav{gap:1rem;flex-wrap:wrap;}
 <section class="block" id="rent-vs-buy-calculator">
   <p class="sec-eyebrow">Buyer Tool &middot; Medical Relocation</p>
   <h2 class="sec-title">Rent vs. Buy Calculator</h2>
-  <p class="sec-intro">Runs a month-by-month comparison &mdash; what a buyer builds in home equity versus what a renter could build by investing the difference elsewhere &mdash; to estimate the point where buying pulls ahead. This is the exact question I hear most from relocating clients deciding whether to rent for the first year.</p>
+  <p class="sec-intro">Runs a month-by-month comparison &mdash; what a buyer builds in home equity versus what a renter could build by investing the difference elsewhere, including the tax savings from deducting mortgage interest and property tax &mdash; to estimate the point where buying pulls ahead. This is the exact question I hear most from relocating clients deciding whether to rent for the first year.</p>
 
   <div class="calc-card">
     <div class="calc-grid">
@@ -1876,6 +1947,12 @@ nav{gap:1rem;flex-wrap:wrap;}
         <label for="rvb-tax">Property Tax <span class="calc-unit">% / yr</span></label>
         <input type="text" inputmode="decimal" id="rvb-tax-num" class="calc-num" value="2.3">
         <input type="range" id="rvb-tax" class="calc-slider" min="0" max="4" step="0.05" value="2.3">
+        <label class="calc-radio-label" style="cursor:pointer;margin-top:0.5rem;">
+          <input type="checkbox" id="rvb-homestead" checked /> Homestead exemption (primary residence) <span class="calc-info" title="Texas' 2026 general homestead exemption removes $140,000 from taxable value for school district taxes, and caps how fast your taxable value can rise to 10%/year once homesteaded &mdash; even if your home's market value rises faster. City/county exemptions vary by jurisdiction and aren't included here.">&#9432;</span>
+        </label>
+        <label class="calc-radio-label" id="rvb-over65-wrap" style="cursor:pointer;margin-top:0.3rem;">
+          <input type="checkbox" id="rvb-over65" /> Age 65+ or disabled (additional $10,000 exemption)
+        </label>
       </div>
       <div class="calc-field">
         <label for="rvb-ins">Home Insurance <span class="calc-unit">$ / yr</span></label>
@@ -1924,6 +2001,11 @@ nav{gap:1rem;flex-wrap:wrap;}
         <input type="text" inputmode="decimal" id="rvb-invest-num" class="calc-num" value="5">
         <input type="range" id="rvb-invest" class="calc-slider" min="0" max="12" step="0.25" value="5">
       </div>
+      <div class="calc-field">
+        <label for="rvb-taxrate">Marginal Federal Tax Rate <span class="calc-unit">%</span> <span class="calc-info" title="Mortgage interest and property taxes are deductible if you itemize. This matters most for higher earners and larger loans, where itemizing typically beats the standard deduction. Set to 0 if you don't expect to itemize.">&#9432;</span></label>
+        <input type="text" inputmode="decimal" id="rvb-taxrate-num" class="calc-num" value="24">
+        <input type="range" id="rvb-taxrate" class="calc-slider" min="0" max="37" step="1" value="24">
+      </div>
     </div>
 
     <div class="calc-verdict">
@@ -1945,10 +2027,10 @@ nav{gap:1rem;flex-wrap:wrap;}
 
 <script>
 (function(){
-  var ids = ['price','down','rate','term','closing','tax','ins','hoa','maint','appreciation','sellcost','rent','rentincr','rentersins','invest'];
+  var ids = ['price','down','rate','term','closing','tax','ins','hoa','maint','appreciation','sellcost','rent','rentincr','rentersins','invest','taxrate'];
   var s={}, n={};
   ids.forEach(function(id){ s[id]=document.getElementById('rvb-'+id); n[id]=document.getElementById('rvb-'+id+'-num'); });
-  var pctIds = {down:1,rate:1,closing:1,tax:1,maint:1,appreciation:1,sellcost:1,rentincr:1,invest:1};
+  var pctIds = {down:1,rate:1,closing:1,tax:1,maint:1,appreciation:1,sellcost:1,rentincr:1,invest:1,taxrate:1};
 
   function parseNum(v){ var x=parseFloat(String(v).replace(/[^0-9.]/g,'')); return isNaN(x)?0:x; }
   function fmtMoney(x){ return '$'+Math.round(x).toLocaleString('en-US'); }
@@ -1966,7 +2048,7 @@ nav{gap:1rem;flex-wrap:wrap;}
     var closingPct=parseNum(n.closing.value), taxPct=parseNum(n.tax.value), insYr=parseNum(n.ins.value), hoaYr=parseNum(n.hoa.value);
     var maintPct=parseNum(n.maint.value), appreciation=parseNum(n.appreciation.value), sellCostPct=parseNum(n.sellcost.value);
     var rentMo=parseNum(n.rent.value), rentIncr=parseNum(n.rentincr.value), rentersIns=parseNum(n.rentersins.value);
-    var investReturn=parseNum(n.invest.value);
+    var investReturn=parseNum(n.invest.value), taxRate=parseNum(n.taxrate.value)/100;
 
     var down = price*downPct/100;
     var loan = price-down;
@@ -1981,12 +2063,27 @@ nav{gap:1rem;flex-wrap:wrap;}
     var rows = '';
     var maxYears = Math.min(term, 30);
 
+    var isHomestead = document.getElementById('rvb-homestead').checked;
+    var exemption = isHomestead ? (140000 + (document.getElementById('rvb-over65').checked ? 10000 : 0)) : 0;
+    var assessedValue = price; // Texas homes are assessed at market value in the year of purchase
+
     for (var yr=1; yr<=maxYears; yr++){
-      var yearTax = price*(taxPct/100)*Math.pow(1.03, yr-1);
+      var homeValueThisYear = price*Math.pow(1+appreciation/100, yr);
+      if (yr>1) {
+        if (isHomestead) {
+          // Once homesteaded, taxable (assessed) value can rise at most 10%/yr regardless of market appreciation.
+          assessedValue = Math.min(homeValueThisYear, assessedValue*1.10);
+        } else {
+          assessedValue = homeValueThisYear;
+        }
+      }
+      var taxableValue = Math.max(assessedValue - exemption, 0);
+      var yearTax = taxableValue*(taxPct/100);
       var yearIns = insYr*Math.pow(1.03, yr-1);
       var yearHoa = hoaYr*Math.pow(1.03, yr-1);
       var yearMaint = price*(maintPct/100)*Math.pow(1.03, yr-1);
       var yearRentMo = rentMo*Math.pow(1+rentIncr/100, yr-1);
+      var yearInterestPaid = 0;
 
       for (var m=0; m<12; m++){
         var buyerMonthlyOut = pmt + (yearTax+yearIns+yearHoa+yearMaint)/12;
@@ -1995,12 +2092,18 @@ nav{gap:1rem;flex-wrap:wrap;}
         investAcct = investAcct*(1+monthlyInvestRate) + diff;
         if (balance>0){
           var interest = balance*rMo;
+          yearInterestPaid += interest;
           var principalPaid = Math.min(pmt-interest, balance);
           balance -= principalPaid;
         }
       }
 
-      var homeValue = price*Math.pow(1+appreciation/100, yr);
+      // Mortgage interest + property tax are deductible if itemizing -- reduces the buyer's real cost,
+      // which shrinks how much extra the renter is able to invest each year.
+      var taxSavings = (yearInterestPaid + yearTax) * taxRate;
+      investAcct -= taxSavings;
+
+      var homeValue = homeValueThisYear;
       var buyerNet = homeValue*(1-sellCostPct/100) - Math.max(balance,0);
       var renterNet = investAcct;
 
@@ -2034,6 +2137,11 @@ nav{gap:1rem;flex-wrap:wrap;}
       calculate();
     });
   });
+  document.getElementById('rvb-homestead').addEventListener('change', function(){
+    document.getElementById('rvb-over65-wrap').style.display = this.checked ? 'block' : 'none';
+    calculate();
+  });
+  document.getElementById('rvb-over65').addEventListener('change', calculate);
   calculate();
 })();
 </script>
