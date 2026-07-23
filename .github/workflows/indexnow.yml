@@ -1,0 +1,69 @@
+name: Submit changed pages to IndexNow
+
+# Runs automatically every time you push to main (i.e. every time you
+# publish via GitHub Desktop). Detects which .html files were added or
+# changed in that push and pings IndexNow (Bing, Yandex, and other
+# participating engines) so they know to recrawl those exact pages.
+#
+# Domain move checklist:
+#   1. Re-host c9cc9eb35a914419b6c32306b011fda9.txt at the new domain's root
+#   2. Update SITE_HOST below to the new domain
+#   3. No new key needed — same key works on any domain it's hosted on
+
+on:
+  push:
+    branches: [main]
+
+env:
+  INDEXNOW_KEY: c9cc9eb35a914419b6c32306b011fda9
+  SITE_HOST: faybrink.github.io
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Find changed or added HTML pages
+        id: changed
+        run: |
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.event.after }}"
+
+          # On a brand-new branch or first-ever push, "before" is all zeros.
+          # Fall back to just the files touched in the most recent commit.
+          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD -- '*.html' 2>/dev/null || git show --name-only --diff-filter=ACMR --pretty="" HEAD -- '*.html')
+          else
+            FILES=$(git diff --name-only --diff-filter=ACMR "$BEFORE" "$AFTER" -- '*.html')
+          fi
+
+          echo "Changed HTML files:"
+          echo "$FILES"
+
+          # Build a JSON array of full URLs
+          URLS=$(echo "$FILES" | grep -v '^$' | jq -R -s -c --arg host "https://${{ env.SITE_HOST }}/" 'split("\n") | map(select(length > 0)) | map($host + .)')
+
+          echo "urls=$URLS" >> "$GITHUB_OUTPUT"
+          echo "count=$(echo "$URLS" | jq 'length')" >> "$GITHUB_OUTPUT"
+
+      - name: Submit to IndexNow
+        if: steps.changed.outputs.count != '0'
+        run: |
+          echo "Submitting ${{ steps.changed.outputs.count }} URL(s) to IndexNow..."
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+                  "host": "${{ env.SITE_HOST }}",
+                  "key": "${{ env.INDEXNOW_KEY }}",
+                  "keyLocation": "https://${{ env.SITE_HOST }}/${{ env.INDEXNOW_KEY }}.txt",
+                  "urlList": ${{ steps.changed.outputs.urls }}
+                }' \
+            -w "\nIndexNow response code: %{http_code}\n"
+
+      - name: Nothing to submit
+        if: steps.changed.outputs.count == '0'
+        run: echo "No HTML pages changed in this push — skipping IndexNow submission."
