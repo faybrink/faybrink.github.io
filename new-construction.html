@@ -402,6 +402,7 @@ function toggleFaq(btn){
       'x':        'https://twitter.com/intent/tweet?url='+enc(url)+'&text='+enc(title)+'&via=FayBrinkHouston',
       'facebook': 'https://www.facebook.com/sharer/sharer.php?u='+enc(url),
       'linkedin': 'https://www.linkedin.com/sharing/share-offsite/?url='+enc(url),
+      'pinterest':'https://pinterest.com/pin/create/button/?url='+enc(url)+'&description='+enc(title),
       'email':    'mailto:?subject='+enc(title)+'&body='+enc(title+'\n\n'+url)
     };
     strip.querySelectorAll('[data-share]').forEach(function(btn){

@@ -401,6 +401,7 @@ nav{gap:1rem;flex-wrap:wrap;}
   <a class="share-btn" data-share="x" href="#" target="_blank" rel="noopener">&#120143; / Twitter</a>
   <a class="share-btn" data-share="facebook" href="#" target="_blank" rel="noopener">Facebook</a>
   <a class="share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
+  <a class="share-btn" data-share="pinterest" href="#" target="_blank" rel="noopener">Pinterest</a>
   <a class="share-btn" data-share="email" href="#">Email</a>
   <button class="share-btn" data-copy>Copy Link</button>
 </div>
@@ -488,6 +489,7 @@ document.addEventListener('click',function(e){
       'x':        'https://twitter.com/intent/tweet?url='+enc(url)+'&text='+enc(title)+'&via=FayBrinkHouston',
       'facebook': 'https://www.facebook.com/sharer/sharer.php?u='+enc(url),
       'linkedin': 'https://www.linkedin.com/sharing/share-offsite/?url='+enc(url),
+      'pinterest':'https://pinterest.com/pin/create/button/?url='+enc(url)+'&description='+enc(title),
       'email':    'mailto:?subject='+enc(title)+'&body='+enc(title+'\n\n'+url)
     };
 
