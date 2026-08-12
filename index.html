@@ -346,7 +346,7 @@
 
     /* FOOTER */
     footer {
-      background: rgba(0,0,0,0.35); padding: 1.75rem 6vw;
+      background: var(--navy); padding: 1.75rem 6vw;
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 1rem;
       border-top: 1px solid rgba(214,162,74,0.1);
@@ -743,38 +743,47 @@ nav{gap:1rem;flex-wrap:wrap;}
     <div style="margin-top:1rem;margin-bottom:2rem;">
       <a href="https://fay.houstonhomehunters.com/blog" target="_blank" rel="noopener" class="btn-outline">View All Posts →</a>
     </div>
-    <div class="blog-grid">
+    <div class="blog-grid" id="strategy-files-grid">
+      <!-- Populated automatically from feed.xml — no manual edits needed. See script below. -->
       <article class="blog-card">
-        <p class="blog-category">Divorce Real Estate · Houston · April 2026</p>
-        <h3 class="blog-title">Selling Your Home During a Divorce: What No One Tells You (But You Need to Know)</h3>
-        <p class="blog-excerpt">Divorce turns even straightforward decisions into something heavier. When a home is involved — your biggest shared asset — the stakes rise fast. Here's what really matters and how to avoid the missteps that quietly cost people time, money, and peace of mind.</p>
-        <a href="blog-divorce-home-sale-texas.html" class="blog-link">Read More</a>
-      </article>
-      <article class="blog-card">
-        <p class="blog-category">Houston Market · Buyer Strategy · March 2026</p>
-        <h3 class="blog-title">Rent vs. Own: Is Now a Good Time to Buy in the Houston Metro? (The Math – Updated 2026)</h3>
-        <p class="blog-excerpt">Interest rates are elevated, home prices have stabilized, and rents remain historically high. Before you wait one more year, let's break down the real cost of waiting in Katy, The Woodlands, and Cypress with actual 2026 numbers.</p>
-        <a href="https://fay.houstonhomehunters.com/blog/article/rent-vs-own-is-now-a-good-time-to-buy-in-the-houston-metro-the-math--updated-2026/bl1e01213d07f74d" target="_blank" rel="noopener" class="blog-link">Read More</a>
-      </article>
-      <article class="blog-card">
-        <p class="blog-category">Relocation Guide · Cypress, TX · March 2026</p>
-        <h3 class="blog-title">The Ultimate Guide to Living in Cypress, TX (2026 Edition)</h3>
-        <p class="blog-excerpt">Master-planned communities, Cy-Fair ISD, the Hwy 290 commute, and hidden local gems — everything you need to know before making Cypress your home, from a Realtor who actually lives here.</p>
-        <a href="https://fay.houstonhomehunters.com/blog/article/the-ultimate-guide-to-living-in-cypress-tx-2026-edition/ble459f38ea4b84f" target="_blank" rel="noopener" class="blog-link">Read More</a>
-      </article>
-      <article class="blog-card">
-        <p class="blog-category">Relocation Guide · Katy, TX · March 2026</p>
-        <h3 class="blog-title">The Ultimate Guide to Living in Katy, TX</h3>
-        <p class="blog-excerpt">Katy is the heavyweight champion of West Houston — Cinco Ranch, Elyson, top-rated Katy ISD, and the best Energy Corridor commute in the metro. Here's the full inside scoop on Houston's most established powerhouse suburb.</p>
-        <a href="https://fay.houstonhomehunters.com/blog/article/the-ultimate-guide-to-living-in-katy-tx/bldb37e81870cf4e" target="_blank" rel="noopener" class="blog-link">Read More</a>
-      </article>
-      <article class="blog-card">
-        <p class="blog-category">Relocation Guide · Fulshear, TX · March 2026</p>
-        <h3 class="blog-title">The Ultimate Guide to Living in Fulshear, TX</h3>
-        <p class="blog-excerpt">Small-town Texas charm meets explosive luxury growth. Fulshear is one of the fastest-growing cities in the state — Cross Creek Ranch, acreage homes, and jaw-dropping new amenities for buyers who want to get in early.</p>
-        <a href="https://fay.houstonhomehunters.com/blog/article/the-ultimate-guide-to-living-in-fulshear-tx/blcc828b55702d4d" target="_blank" rel="noopener" class="blog-link">Read More</a>
+        <p class="blog-category">Loading latest posts…</p>
       </article>
     </div>
+    <script>
+    (function(){
+      var grid = document.getElementById('strategy-files-grid');
+      if (!grid) return;
+      fetch('feed.xml')
+        .then(function(r){ return r.text(); })
+        .then(function(str){
+          var xml = new DOMParser().parseFromString(str, 'application/xml');
+          var items = Array.prototype.slice.call(xml.querySelectorAll('item')).map(function(item){
+            var q = function(sel){ var el = item.querySelector(sel); return el ? el.textContent : ''; };
+            return {
+              title: q('title'),
+              link: q('link'),
+              description: q('description'),
+              pubDate: new Date(q('pubDate')),
+              category: q('category')
+            };
+          });
+          items.sort(function(a, b){ return b.pubDate - a.pubDate; });
+          var latest = items.slice(0, 5);
+          if (!latest.length) return;
+          grid.innerHTML = latest.map(function(post){
+            var dateStr = isNaN(post.pubDate) ? '' : post.pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            var meta = [post.category, dateStr].filter(Boolean).join(' &middot; ');
+            return '<article class="blog-card">' +
+              '<p class="blog-category">' + meta + '</p>' +
+              '<h3 class="blog-title">' + post.title + '</h3>' +
+              '<p class="blog-excerpt">' + post.description + '</p>' +
+              '<a href="' + post.link + '" class="blog-link">Read More</a>' +
+            '</article>';
+          }).join('');
+        })
+        .catch(function(err){ console.error('Strategy Files: could not load feed.xml', err); });
+    })();
+    </script>
   </section>
 
   <!-- CONTACT -->
