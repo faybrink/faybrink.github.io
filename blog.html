@@ -171,6 +171,8 @@ nav{gap:1rem;flex-wrap:wrap;}
   <button class="filter-btn" onclick="filterPosts('luxury', this)">Luxury</button>
   <button class="filter-btn" onclick="filterPosts('homesteading', this)">Homesteading</button>
   <button class="filter-btn" onclick="filterPosts('market', this)">Market Analysis</button>
+  <button class="filter-btn" onclick="filterPosts('finance', this)">Finance</button>
+  <button class="filter-btn" onclick="filterPosts('re-news', this)">Real Estate News</button>
   <button class="filter-btn" onclick="filterPosts('area-guide', this)">Area Guides</button>
   <button class="filter-btn" onclick="filterPosts('investor', this)">Investor</button>
   <button class="filter-btn" onclick="filterPosts('divorce', this)">Divorce</button>
@@ -190,6 +192,34 @@ nav{gap:1rem;flex-wrap:wrap;}
       <h2 class="post-title"><a href="blog-podcast-clarity-driven-real-estate.html">Clarity-Driven Real Estate Decisions with Fay Brink</a></h2>
       <p class="post-excerpt">Due diligence before offers, what buyers miss about Houston flood and insurance risk, and how a nursing and claims adjusting background shapes how Fay represents clients.</p>
       <a href="blog-podcast-clarity-driven-real-estate.html" class="post-link">Listen / Read Article</a>
+    </article>
+
+<article class="post-card" data-cat="re-news taxes">
+      <p class="post-cat">Real Estate News &middot; August 13, 2026</p>
+      <h2 class="post-title"><a href="blog-texas-property-tax-elimination-2026.html">Texas's Push to Eliminate Property Taxes: What's Proposed vs. What's Already Real</a></h2>
+      <p class="post-excerpt">Abbott's five-part plan, the GOP push for full elimination, what's already locked in from 2025, and why nothing can change before the 2027 legislative session.</p>
+      <a href="blog-texas-property-tax-elimination-2026.html" class="post-link">Read Article</a>
+    </article>
+
+<article class="post-card" data-cat="homesteading">
+      <p class="post-cat">Homesteading &amp; Acreage &middot; August 13, 2026</p>
+      <h2 class="post-title"><a href="blog-farm-animal-moving-goats-sheep-pigs.html">Moving Goats, Sheep &amp; Pigs: Fencing, Trailers &amp; the Escape-Artist Problem</a></h2>
+      <p class="post-excerpt">Health papers, trailer setup by species, and why "goat-proof" fencing is a genuinely different standard than what worked for cattle or horses on your last property.</p>
+      <a href="blog-farm-animal-moving-goats-sheep-pigs.html" class="post-link">Read Article</a>
+    </article>
+
+<article class="post-card" data-cat="homesteading">
+      <p class="post-cat">Homesteading &amp; Acreage &middot; August 12, 2026</p>
+      <h2 class="post-title"><a href="blog-farm-animal-moving-cattle.html">Moving Cattle to a New Property: Health Papers, Trailers &amp; the First Week</a></h2>
+      <p class="post-excerpt">Health certificates, brand inspections, trailer and handling logistics, and setting up pasture and working facilities before the herd arrives.</p>
+      <a href="blog-farm-animal-moving-cattle.html" class="post-link">Read Article</a>
+    </article>
+
+<article class="post-card" data-cat="buyer-strategy">
+      <p class="post-cat">Finance &amp; Buyer Strategy &middot; August 11, 2026</p>
+      <h2 class="post-title"><a href="blog-fha-credit-scoring-vantagescore-fico10t.html">Your Credit Score Just Got a Second Opinion — Here's What FHA's New Scoring Models Mean for You</a></h2>
+      <p class="post-excerpt">FHA now accepts VantageScore 4.0 and FICO 10T — what's actually in these models, how to build your profile for them, and why rates and rising foreclosures mean credit access and affordability are moving in opposite directions right now.</p>
+      <a href="blog-fha-credit-scoring-vantagescore-fico10t.html" class="post-link">Read Article</a>
     </article>
 
 <article class="post-card" data-cat="homesteading">
@@ -1390,7 +1420,8 @@ function filterPosts(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.post-card').forEach(card => {
-    card.classList.toggle('hidden', cat !== 'all' && card.dataset.cat !== cat);
+    var cats = (card.dataset.cat || '').split(' ');
+    card.classList.toggle('hidden', cat !== 'all' && cats.indexOf(cat) === -1);
   });
   var banner = document.getElementById('market-valuation-banner');
   if (banner) banner.style.display = (cat === 'market') ? 'block' : 'none';
