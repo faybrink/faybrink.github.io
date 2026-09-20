@@ -488,13 +488,25 @@
   </url>
   <url>
     <loc>https://faybrink.github.io/builder-castlerock-communities.html</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://faybrink.github.io/builder-chesmar-homes.html</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://faybrink.github.io/builder-risewell-homes.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://faybrink.github.io/builder-hamilton-thomas-homes.html</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -530,7 +542,7 @@
   </url>
   <url>
     <loc>https://faybrink.github.io/builder-perry-homes.html</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
