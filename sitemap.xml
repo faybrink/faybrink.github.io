@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://faybrink.github.io/blog-fha-203k-loan-primer.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://faybrink.github.io/blog-is-houston-in-a-housing-bubble.html</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -1315,12 +1321,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://faybrink.github.io/blog-new-construction-inventory-2025.html</loc>
-    <lastmod>2025-09-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://faybrink.github.io/blog-one-percent-rule-houston.html</loc>
     <lastmod>2025-08-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -1343,12 +1343,6 @@
     <lastmod>2025-06-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://faybrink.github.io/blog-tariffs-builder-negotiation-2025.html</loc>
-    <lastmod>2025-06-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-cash-on-cash-vs-cap-rate.html</loc>
@@ -1399,12 +1393,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://faybrink.github.io/blog-new-construction-appraisal-gaps-2024.html</loc>
-    <lastmod>2024-12-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://faybrink.github.io/blog-poa-advance-directives-keep-guardian-out.html</loc>
     <lastmod>2024-11-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -1415,12 +1403,6 @@
     <lastmod>2024-11-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://faybrink.github.io/blog-fed-cut-new-construction-2024.html</loc>
-    <lastmod>2024-10-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-houston-communities-amenities-lap-pools-fitness.html</loc>
@@ -1627,12 +1609,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://faybrink.github.io/blog-houston-builder-incentives-worth-2023.html</loc>
-    <lastmod>2023-07-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://faybrink.github.io/blog-certified-senior-transition-specialist.html</loc>
     <lastmod>2023-06-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -1661,12 +1637,6 @@
     <lastmod>2023-04-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://faybrink.github.io/blog-new-construction-outsold-resale-2023.html</loc>
-    <lastmod>2023-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-community-property-texas-divorce.html</loc>
@@ -1711,12 +1681,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://faybrink.github.io/blog-new-construction-supply-delays-appraisal-gap-2022.html</loc>
-    <lastmod>2022-10-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://faybrink.github.io/blog-best-inner-loop-corridors-families.html</loc>
     <lastmod>2022-09-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -1731,12 +1695,6 @@
   <url>
     <loc>https://faybrink.github.io/blog-best-suburbs-houston-families.html</loc>
     <lastmod>2022-07-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://faybrink.github.io/blog-new-construction-rate-lock-2022.html</loc>
-    <lastmod>2022-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
