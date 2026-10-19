@@ -221,6 +221,10 @@ select.calc-num{cursor:pointer;}
 /* contact */
 .dc-form-wrap{max-width:600px;margin:0 auto;}
 .dc-form-wrap iframe{display:block;width:100%;min-width:100%;border:none;}
+.dc-disclaimer{max-width:760px;margin:2.6rem auto 0;background:#fff3cd;border:2px solid #d6a24a;border-left:6px solid #191C45;padding:1.4rem 1.6rem;}
+.dc-disclaimer .dc-disc-title{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#191C45;font-weight:700;margin-bottom:.6rem;}
+.dc-disclaimer p{font-size:.84rem;color:#33333f;line-height:1.65;margin-bottom:.6rem;}
+.dc-disclaimer p:last-child{margin-bottom:0;}
 .dc-form-fallback{background:#fff;border:1px solid rgba(25,28,69,0.09);border-top:3px solid var(--gold);padding:1.5rem 1.6rem;font-size:0.95rem;color:#33333f;text-align:center;}
 .dc-form-fallback a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold);}
 
@@ -299,7 +303,7 @@ select.calc-num{cursor:pointer;}
   <p class="eyebrow">Free Divorce Tool &middot; Houston, TX</p>
   <h1>The House: Keep It, Buy Out, or Sell?</h1>
   <div class="gold-rule"></div>
-  <p>Put in your numbers and see the equity split, what a buyout would cost, whether one income can carry the refinance, and what each of you walks away with if the house sells instead. Nothing you type here is saved or sent anywhere.</p>
+  <p>Put in your numbers and see the equity split, what a buyout would cost, whether one income can carry the refinance, and what each of you walks away with if the house sells instead. Your numbers aren't saved, aren't sent to me, and are hidden from the site's analytics.</p>
 </header>
 
 <!-- STEP 1 + STEP 2 INPUTS (light) -->
@@ -308,7 +312,7 @@ select.calc-num{cursor:pointer;}
   <h2 class="sec-title">Start With the House</h2>
   <p class="sec-intro">Estimates are fine. You can change anything and the results update as you go. If you don't know what the house is worth, a <a href="https://fay.houstonhomehunters.com/seller/homeestimate/default" target="_blank" rel="noopener">quick home value estimate</a> gets you in the ballpark, but in a divorce you'll want a real appraisal or a neutral pricing opinion before anyone signs anything.</p>
 
-  <div class="calc-card">
+  <div class="calc-card" data-clarity-mask="True">
     <p class="dc-step">Step 1 &middot; The Equity</p>
     <div class="calc-grid">
       <div class="calc-field">
@@ -405,7 +409,7 @@ select.calc-num{cursor:pointer;}
 </section>
 
 <!-- RESULTS (dark) -->
-<section class="dc-results-band" id="dc-results" aria-live="polite">
+<section class="dc-results-band" id="dc-results" aria-live="polite" data-clarity-mask="True">
   <div class="dc-results-inner">
     <p class="sec-eyebrow">Your Results</p>
     <h2 class="dc-h2">What the Numbers Say</h2>
@@ -467,11 +471,20 @@ select.calc-num{cursor:pointer;}
 <section class="block" id="dc-contact">
   <p class="sec-eyebrow">Confidential</p>
   <h2 class="sec-title">Want a Copy, or a Second Set of Eyes?</h2>
-  <p class="sec-intro">I can send you a written summary of these numbers, or we can talk through your options privately. I work with both spouses, attorneys, and mediators, and I don't share what you tell me with anyone you haven't asked me to.</p>
+  <p class="sec-intro">I can send you a written summary of these numbers, or we can talk through your options privately. I work with both spouses, attorneys, and mediators, and I don't share what you tell me with anyone you haven't asked me to. Attorney or mediator? <a href="divorce-attorneys.html">Get a link for your office</a>.</p>
   <div class="dc-form-wrap" id="dc-form-wrap">
     <div class="dc-form-fallback" id="dc-form-fallback">
       <p>Call or text me directly at <a href="tel:+18327233025">(832) 723-3025</a>, or <a href="mailto:Fay.Brink@BlairRG.com?subject=Divorce%20home%20calculator%20question">email me</a>. If it's easier, print your results first and bring them to the conversation.</p>
     </div>
+  </div>
+  <div class="dc-disclaimer">
+    <p class="dc-disc-title">Disclaimer</p>
+    <p>This calculator is for general information and planning only. It isn't legal, tax, financial, or lending advice, and it isn't an appraisal, a broker price opinion, or a promise of any outcome.</p>
+    <p>Results depend entirely on the numbers entered. What actually happens also depends on the housing market, local supply and demand, the broader economy and interest rates, the pricing strategy both spouses agree to, the home's condition, the appraisal, lender approval, the loan program, each person's credit, and the terms of the decree.</p>
+    <p>The 80%, 95%, and debt-to-income thresholds shown are general guidelines. They vary by lender and loan program, and they change over time.</p>
+    <p>How property is divided in a Texas divorce is decided by agreement or by the court. The split shown is only the percentage you enter.</p>
+    <p>Using this calculator doesn't create an agency relationship or an attorney-client relationship. Fay Brink is a licensed Texas REALTOR&reg;, not an attorney, CPA, or lender. Talk with your attorney, a tax professional, and a lender before making decisions.</p>
+    <p><strong>Privacy:</strong> the numbers you enter aren't saved or sent to me, and the calculator and its results are hidden from the site's analytics, which only count page visits and whether the calculator was used. If you choose to contact me, I'll see only what you send.</p>
   </div>
 </section>
 
@@ -492,7 +505,7 @@ select.calc-num{cursor:pointer;}
 </section>
 
 <!-- PRINT-ONLY SUMMARY -->
-<div id="dc-print" aria-hidden="true"></div>
+<div id="dc-print" aria-hidden="true" data-clarity-mask="True"></div>
 
 <footer>
   <div class="footer-brand">FAY BRINK &nbsp;·&nbsp; RENAISSANCE PREMIER REALTY GROUP LLC</div>
@@ -747,7 +760,7 @@ document.addEventListener('click',function(e){
         row('Departing spouse: buyout', L.under ? 'n/a' : money(L.buyout)) +
         row('Departing spouse: cash if sold', money(L.sellDep)) +
       '</table>' +
-      '<p class="p-note">These figures are estimates based on the numbers entered and are not legal, tax, lending, or appraisal advice. Lender approval, the final appraisal, and the terms of your decree will determine the actual outcome. Review any division of property with your attorney.</p>' +
+      '<p class="p-note">These figures are estimates based on the numbers entered and are not legal, tax, lending, or appraisal advice. Actual results also depend on market conditions, supply and demand, interest rates, the agreed pricing strategy, the home&rsquo;s condition, the appraisal, lender approval, and the terms of your decree. Review any division of property with your attorney.</p>' +
       '<p class="p-note">Fay Brink, REALTOR&reg; &middot; Renaissance Premier Realty Group LLC, brokered by Blair Realty Group &middot; (832) 723-3025</p>';
   }
   window.addEventListener('beforeprint', buildPrint);
