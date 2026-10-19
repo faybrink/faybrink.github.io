@@ -220,7 +220,34 @@ select.calc-num{cursor:pointer;}
 
 /* contact */
 .dc-form-wrap{max-width:600px;margin:0 auto;}
-.dc-form-wrap iframe{display:block;width:100%;min-width:100%;border:none;}
+.dc-form{background:#fff;border:1px solid rgba(25,28,69,0.09);border-top:3px solid var(--gold);padding:1.8rem clamp(1.2rem,3vw,2rem);text-align:left;}
+.dc-f-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.1rem 1.4rem;margin-bottom:1.3rem;}
+.dc-f-field{display:block;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);font-weight:600;margin-bottom:1.1rem;}
+.dc-f-grid .dc-f-field{margin-bottom:0;}
+.dc-f-field input,.dc-f-field textarea{display:block;width:100%;margin-top:0.45rem;font-family:'Raleway',sans-serif;font-size:0.98rem;letter-spacing:0;text-transform:none;color:var(--navy);background:var(--bg);border:1px solid rgba(25,28,69,0.15);padding:0.6rem 0.75rem;box-sizing:border-box;border-radius:0;}
+.dc-f-field input:focus,.dc-f-field textarea:focus{outline:none;border-color:var(--gold);}
+.dc-f-field textarea{resize:vertical;min-height:96px;}
+.dc-f-hint,.dc-f-opt{display:block;margin-top:0.35rem;font-size:0.74rem;letter-spacing:0;text-transform:none;font-weight:400;color:var(--taupe);font-style:italic;font-family:'Cormorant Garamond',serif;}
+.dc-f-opt{display:inline;margin:0;}
+.dc-f-choice{border:none;margin:0 0 1.2rem;padding:0;display:flex;flex-wrap:wrap;gap:0.5rem;}
+.dc-f-choice legend{width:100%;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);font-weight:600;margin-bottom:0.5rem;}
+.dc-f-choice label{cursor:pointer;}
+.dc-f-choice input{position:absolute;opacity:0;width:1px;height:1px;}
+.dc-f-choice span{display:inline-block;padding:0.5rem 0.95rem;border:1px solid rgba(25,28,69,0.2);background:var(--bg);font-size:0.86rem;color:var(--navy);transition:background .2s,color .2s,border-color .2s;}
+.dc-f-choice input:checked+span{background:var(--navy);color:var(--cream);border-color:var(--navy);}
+.dc-f-choice input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px;}
+.dc-f-error{color:#9b2c20;font-size:0.86rem;min-height:1.2em;margin:0 0 0.6rem;}
+.dc-f-error:empty{display:none;}
+.dc-f-field.dc-f-bad input,.dc-f-choice.dc-f-bad span{border-color:#d9695f;}
+.dc-f-btn{border:none;cursor:pointer;font-family:'Raleway',sans-serif;}
+.dc-f-btn[disabled]{opacity:0.6;cursor:default;}
+.dc-f-note{font-size:0.78rem;color:var(--slate);line-height:1.55;margin-top:0.9rem;}
+.dc-f-thanks{background:#fff;border:1px solid rgba(25,28,69,0.09);border-top:3px solid var(--gold);padding:2rem;text-align:center;}
+.dc-f-thanks-title{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--navy);margin-bottom:0.5rem;}
+.dc-f-sign{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--navy);margin-top:0.6rem;}
+.dc-f-alt{text-align:center;font-size:0.9rem;color:#33333f;margin-top:1.2rem;}
+.dc-f-alt a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold);}
+
 .dc-disclaimer{max-width:760px;margin:2.6rem auto 0;background:#fff3cd;border:2px solid #d6a24a;border-left:6px solid #191C45;padding:1.4rem 1.6rem;}
 .dc-disclaimer .dc-disc-title{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#191C45;font-weight:700;margin-bottom:.6rem;}
 .dc-disclaimer p{font-size:.84rem;color:#33333f;line-height:1.65;margin-bottom:.6rem;}
@@ -473,9 +500,48 @@ select.calc-num{cursor:pointer;}
   <h2 class="sec-title">Want a Copy, or a Second Set of Eyes?</h2>
   <p class="sec-intro">I can send you a written summary of these numbers, or we can talk through your options privately. I work with both spouses, attorneys, and mediators, and I don't share what you tell me with anyone you haven't asked me to. Attorney or mediator? <a href="divorce-attorneys.html">Get a link for your office</a>.</p>
   <div class="dc-form-wrap" id="dc-form-wrap">
-    <div class="dc-form-fallback" id="dc-form-fallback">
-      <p>Call or text me directly at <a href="tel:+18327233025">(832) 723-3025</a>, or <a href="mailto:Fay.Brink@BlairRG.com?subject=Divorce%20home%20calculator%20question">email me</a>. If it's easier, print your results first and bring them to the conversation.</p>
+    <form class="dc-form" id="dc-form" action="https://submit.jotform.com/submit/262911889535066" method="post" target="dc-f-frame" accept-charset="utf-8" novalidate data-clarity-mask="True">
+      <input type="hidden" name="formID" value="262911889535066">
+      <input type="hidden" name="simple_spc" value="262911889535066-262911889535066">
+      <input type="hidden" name="q9_q9_textbox7" value="">
+      <input type="hidden" name="q10_q10_textbox8" value="">
+      <input type="hidden" name="q11_q11_textbox9" value="">
+      <input type="hidden" name="q12_q12_textbox10" value="">
+      <input type="hidden" name="q13_q13_textbox11" value="">
+      <input type="hidden" name="q14_q14_textbox12" value="">
+      <input type="hidden" name="q15_q15_textbox13" value="">
+      <input type="hidden" name="q16_q16_textbox14" value="">
+      <input type="hidden" name="q17_q17_textbox15" value="">
+      <input type="hidden" name="q18_q18_textbox16" value="">
+      <input type="hidden" name="q19_q19_textbox17" value="">
+      <div class="dc-f-grid">
+        <label class="dc-f-field">First Name<input id="dc-f-first" name="q2_q2_textbox0" type="text" autocomplete="given-name" required></label>
+        <label class="dc-f-field">Last Name<input id="dc-f-last" name="q3_q3_textbox1" type="text" autocomplete="family-name" required></label>
+        <label class="dc-f-field">Email<input id="dc-f-email" name="q4_q4_email2" type="email" autocomplete="email" required></label>
+        <label class="dc-f-field">Phone<input id="dc-f-phone" name="q5_q5_phone3[full]" type="tel" autocomplete="tel" inputmode="tel" placeholder="(000) 000-0000" required><span class="dc-f-hint">I'll only use this to reach you about your question.</span></label>
+      </div>
+      <fieldset class="dc-f-choice"><legend>What would you like?</legend>
+        <label><input type="radio" name="q6_q6_radio4" value="Email me my summary" required><span>Email me my summary</span></label>
+        <label><input type="radio" name="q6_q6_radio4" value="A confidential consultation"><span>A confidential consultation</span></label>
+        <label><input type="radio" name="q6_q6_radio4" value="Both"><span>Both</span></label>
+      </fieldset>
+      <fieldset class="dc-f-choice"><legend>Best way to reach you</legend>
+        <label><input type="radio" name="q7_q7_radio5" value="Call" required><span>Call</span></label>
+        <label><input type="radio" name="q7_q7_radio5" value="Text"><span>Text</span></label>
+        <label><input type="radio" name="q7_q7_radio5" value="Email"><span>Email</span></label>
+      </fieldset>
+      <label class="dc-f-field">Anything you'd like me to know? <span class="dc-f-opt">optional</span><textarea name="q8_q8_textarea6" rows="4"></textarea></label>
+      <p class="dc-f-error" id="dc-f-error" role="alert"></p>
+      <button type="submit" class="btn btn-gold dc-f-btn" id="dc-f-btn">Send Securely</button>
+      <p class="dc-f-note">Sending this also sends me the numbers from your calculator above, so I can see what you're weighing. Nothing is shared with your spouse or anyone else.</p>
+    </form>
+    <div class="dc-f-thanks" id="dc-f-thanks" hidden>
+      <p class="dc-f-thanks-title">Thank you.</p>
+      <p>I'll be in touch personally and discreetly, usually within one business day.</p>
+      <p class="dc-f-sign">Fay Brink, REALTOR&reg;</p>
     </div>
+    <iframe name="dc-f-frame" id="dc-f-frame" title="Form submission" hidden></iframe>
+    <p class="dc-f-alt">Rather talk now? Call or text <a href="tel:+18327233025">(832) 723-3025</a>, or <a href="mailto:Fay.Brink@BlairRG.com?subject=Divorce%20home%20calculator%20question">email me</a>.</p>
   </div>
   <div class="dc-disclaimer">
     <p class="dc-disc-title">Disclaimer</p>
@@ -535,11 +601,6 @@ document.addEventListener('click',function(e){
 </script>
 <script>
 (function(){
-  /* ── Settings ─────────────────────────────────────────────
-     Paste the new Jotform form ID here once the form exists.
-     Leave blank to show the call/text/email fallback instead. */
-  var DC_JOTFORM_ID = '';
-
   /* ── Firm tracking: ?ref=smithlaw ───────────────────────── */
   var ref = '';
   try {
@@ -766,38 +827,55 @@ document.addEventListener('click',function(e){
   window.addEventListener('beforeprint', buildPrint);
   $('dc-print-btn').addEventListener('click', function(){ buildPrint(); track('divorce_calc_print'); window.print(); });
 
-  /* ── Contact form (Jotform, prefilled) ──────────────────── */
-  function loadForm(){
-    if (!DC_JOTFORM_ID) return false;
+  /* ── Contact form: styled here, submits to Jotform ─────── */
+  var HID = ['q9_q9_textbox7','q10_q10_textbox8','q11_q11_textbox9','q12_q12_textbox10','q13_q13_textbox11','q14_q14_textbox12',
+             'q15_q15_textbox13','q16_q16_textbox14','q17_q17_textbox15','q18_q18_textbox16','q19_q19_textbox17'];
+  var form = $('dc-form'), sent = false;
+  function fillHidden(){
     var L = last;
-    var q = {
-      ref: ref || 'direct', home_value: Math.round(L.V), mortgage_balance: Math.round(L.M + L.H),
-      selling_costs: (Math.round(L.s*1000)/10) + '%', total_equity: Math.round(L.equity),
-      split_pct: Math.round(L.d*100) + '%', buyout_amount: Math.round(L.buyout),
-      refi_result: levelWord[L.ltvLevel || ''] + ' / ' + levelWord[L.dtiLevel || ''],
-      net_if_keep: L.under ? 'n/a' : Math.round(L.keepEquity), net_if_sell: Math.round(L.sellKeep) + ' / ' + Math.round(L.sellDep),
-      source_page: 'divorce-home-calculator'
-    };
-    var qs = Object.keys(q).map(function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(q[k]); }).join('&');
-    var wrap = $('dc-form-wrap');
-    wrap.innerHTML = '<iframe id="JotFormIFrame-' + DC_JOTFORM_ID + '" title="Your Divorce Home Summary" allowtransparency="true" ' +
-      'allow="geolocation; microphone; camera; fullscreen; payment" src="https://form.jotform.com/' + DC_JOTFORM_ID + '?' + qs + '" ' +
-      'frameborder="0" style="height:760px;" scrolling="no"></iframe>';
-    var sc = document.createElement('script');
-    sc.src = 'https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js';
-    sc.onload = function(){ if (typeof window.jotformEmbedHandler === 'function') { window.jotformEmbedHandler("iframe[id='JotFormIFrame-" + DC_JOTFORM_ID + "']", 'https://form.jotform.com/'); } };
-    document.body.appendChild(sc);
-    return true;
+    var vals = [ ref || 'direct', money(L.V), money(L.M + L.H), (Math.round(L.s*1000)/10) + '%', money(L.equity),
+      Math.round(L.d*100) + '% to departing spouse', money(L.buyout),
+      'Loan size: ' + levelWord[L.ltvLevel || ''] + ' (' + pct(L.ltv) + '). Qualifying: ' + levelWord[L.dtiLevel || ''] + (isFinite(L.back) ? ' (' + pct(L.back) + ' DTI)' : ''),
+      L.under ? 'n/a' : money(L.keepEquity) + ' equity, ' + money(L.piti) + '/mo',
+      'Sale price ' + money(L.P) + ': keeping spouse ' + money(L.sellKeep) + ', departing spouse ' + money(L.sellDep),
+      'divorce-home-calculator' ];
+    HID.forEach(function(n, i){ var el = form.querySelector('input[name="' + n + '"]'); if (el) el.value = vals[i]; });
   }
-  $('dc-send-btn').addEventListener('click', function(){ track('divorce_calc_send_click'); loadForm(); });
-  if (DC_JOTFORM_ID) {
-    /* load once results exist, so the hidden fields carry the current numbers */
-    var formLoaded = false;
-    var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
-      if (!formLoaded && es[0].isIntersecting) { formLoaded = loadForm(); io.disconnect(); }
-    }) : null;
-    if (io) io.observe($('dc-contact'));
+  function mark(el, bad){ var box = el.closest('.dc-f-field, .dc-f-choice'); if (box) box.classList.toggle('dc-f-bad', bad); }
+  if (form) {
+    ['input','change'].forEach(function(ev){ form.addEventListener(ev, function(e){ if (e.target && e.target.closest) mark(e.target, false); }); });
+    form.addEventListener('submit', function(e){
+      var errs = [];
+      var first = $('dc-f-first'), lastN = $('dc-f-last'), email = $('dc-f-email'), phone = $('dc-f-phone');
+      [first, lastN].forEach(function(el){ var bad = !el.value.trim(); mark(el, bad); if (bad) errs.push('your name'); });
+      var badEmail = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()); mark(email, badEmail); if (badEmail) errs.push('a valid email');
+      var digits = phone.value.replace(/\D/g, ''); var badPhone = digits.length < 10; mark(phone, badPhone); if (badPhone) errs.push('a phone number');
+      ['q6_q6_radio4','q7_q7_radio5'].forEach(function(n){
+        var picked = form.querySelector('input[name="' + n + '"]:checked'); var any = form.querySelector('input[name="' + n + '"]');
+        mark(any, !picked); if (!picked) errs.push(n === 'q6_q6_radio4' ? 'what you\u2019d like' : 'the best way to reach you');
+      });
+      if (errs.length) {
+        e.preventDefault();
+        var uniq = errs.filter(function(x, i){ return errs.indexOf(x) === i; });
+        $('dc-f-error').textContent = 'Please add ' + uniq.join(', ').replace(/, ([^,]*)$/, ' and $1') + '.';
+        return;
+      }
+      $('dc-f-error').textContent = '';
+      fillHidden();
+      sent = true;
+      $('dc-f-btn').disabled = true; $('dc-f-btn').textContent = 'Sending\u2026';
+      track('divorce_calc_form_submit');
+    });
+    $('dc-f-frame').addEventListener('load', function(){
+      if (!sent) return;
+      form.hidden = true; $('dc-f-thanks').hidden = false;
+      $('dc-f-thanks').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
   }
+  $('dc-send-btn').addEventListener('click', function(){
+    track('divorce_calc_send_click');
+    var r = form && form.querySelector('input[name="q6_q6_radio4"][value="Email me my summary"]'); if (r && !form.querySelector('input[name="q6_q6_radio4"]:checked')) r.checked = true;
+  });
 
   calc(false);
 })();
