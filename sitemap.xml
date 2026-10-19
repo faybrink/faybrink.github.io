@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://faybrink.github.io/blog-two-hospitals-one-home-medical-couples-houston.html</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://faybrink.github.io/blog-tenant-retention-buy-and-hold-houston.html</loc>
-    <lastmod>2026-10-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://faybrink.github.io/blog-aging-in-place-vs-moving-houston-seniors.html</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://faybrink.github.io/blog-mediation-marital-home-texas-divorce.html</loc>
     <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -494,7 +476,7 @@
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-divorce-stalling-spouse-sale.html</loc>
-    <lastmod>2026-07-31</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -590,9 +572,15 @@
   </url>
   <url>
     <loc>https://faybrink.github.io/calculators.html</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://faybrink.github.io/divorce-home-calculator.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-custom-vs-production-homes-houston.html</loc>
@@ -1729,7 +1717,7 @@
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-avoid-court-ordered-home-sale-divorce.html</loc>
-    <lastmod>2024-03-10</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1809,7 +1797,7 @@
   </url>
   <url>
     <loc>https://faybrink.github.io/blog-divorce-real-estate-texas-faq.html</loc>
-    <lastmod>2023-10-03</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
