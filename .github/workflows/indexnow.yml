@@ -45,7 +45,8 @@ jobs:
           echo "$FILES"
 
           # Build a JSON array of full URLs
-          URLS=$(echo "$FILES" | grep -v '^$' | jq -R -s -c --arg host "https://${{ env.SITE_HOST }}/" 'split("\n") | map(select(length > 0)) | map($host + .)')
+          # Skip queued posts in _queue/ (not on the website until their date).
+          URLS=$(echo "$FILES" | grep -v '^$' | grep -v '^_' | jq -R -s -c --arg host "https://${{ env.SITE_HOST }}/" 'split("\n") | map(select(length > 0)) | map($host + .)')
 
           echo "urls=$URLS" >> "$GITHUB_OUTPUT"
           echo "count=$(echo "$URLS" | jq 'length')" >> "$GITHUB_OUTPUT"

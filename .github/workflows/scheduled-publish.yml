@@ -1,0 +1,71 @@
+name: Publish scheduled posts
+
+# Every morning, publishes any post in _queue/ whose date has arrived.
+# It runs at 11:15 and 12:15 UTC. The script itself only publishes at or
+# after 6 AM Central, so posts go live around 6:15 AM all year, through
+# daylight saving changes. GitHub can start scheduled runs 15 to 30
+# minutes late when it's busy.
+#
+# To publish right now (for example after a missed morning), open the
+# Actions tab, pick "Publish scheduled posts", and click "Run workflow".
+# That still only publishes posts dated today or earlier.
+
+on:
+  schedule:
+    - cron: '15 11 * * *'
+    - cron: '15 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: scheduled-publish
+  cancel-in-progress: false
+
+env:
+  INDEXNOW_KEY: c9cc9eb35a914419b6c32306b011fda9
+  SITE_HOST: faybrink.github.io
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Move today's post into place
+        id: apply
+        env:
+          FORCE_RUN: ${{ github.event_name == 'workflow_dispatch' }}
+        run: python3 .github/scripts/publish_queue.py
+
+      - name: Commit and push
+        if: steps.apply.outputs.count != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898294+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Scheduled post: ${{ steps.apply.outputs.dates }}"
+          git push origin HEAD:main
+
+      - name: Ask GitHub Pages to rebuild
+        if: steps.apply.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages build request skipped; the push will trigger it."
+
+      # Your IndexNow workflow doesn't run for commits made by this workflow,
+      # so this step submits the new and updated pages itself.
+      - name: Submit to IndexNow
+        if: steps.apply.outputs.html_count != '0'
+        run: |
+          URLS=$(printf '%s\n' ${{ steps.apply.outputs.html }} | jq -R -s -c --arg host "https://${SITE_HOST}/" 'split("\n") | map(select(length > 0)) | map($host + .)')
+          echo "Submitting: $URLS"
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"${SITE_HOST}\",\"key\":\"${INDEXNOW_KEY}\",\"keyLocation\":\"https://${SITE_HOST}/${INDEXNOW_KEY}.txt\",\"urlList\":${URLS}}" \
+            -w "\nIndexNow response code: %{http_code}\n"
