@@ -1,10 +1,11 @@
 name: Publish scheduled posts
 
 # Every morning, publishes any post in _queue/ whose date has arrived.
-# It runs at 11:15 and 12:15 UTC. The script itself only publishes at or
-# after 6 AM Central, so posts go live around 6:15 AM all year, through
-# daylight saving changes. GitHub can start scheduled runs 15 to 30
-# minutes late when it's busy.
+# It runs hourly from 11:15 to 16:15 UTC. The script itself only publishes
+# at or after 6 AM Central, so posts go live around 6:15 AM all year,
+# through daylight saving changes. GitHub can start scheduled runs late or
+# skip one when it's busy, so the later runs are backups. Once the day's
+# post is out, the backup runs find nothing due and do nothing.
 #
 # To publish right now (for example after a missed morning), open the
 # Actions tab, pick "Publish scheduled posts", and click "Run workflow".
@@ -14,6 +15,10 @@ on:
   schedule:
     - cron: '15 11 * * *'
     - cron: '15 12 * * *'
+    - cron: '15 13 * * *'
+    - cron: '15 14 * * *'
+    - cron: '15 15 * * *'
+    - cron: '15 16 * * *'
   workflow_dispatch:
 
 permissions:
@@ -33,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the site
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: main
 
