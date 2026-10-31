@@ -1,7 +1,7 @@
 name: Publish scheduled posts
 
 # Every morning, publishes any post in _queue/ whose date has arrived.
-# It runs hourly from 11:15 to 16:15 UTC. The script itself only publishes
+# It runs hourly from 11:15 to 18:15 UTC, plus 20:15 UTC. The script itself only publishes
 # at or after 6 AM Central, so posts go live around 6:15 AM all year,
 # through daylight saving changes. GitHub can start scheduled runs late or
 # skip one when it's busy, so the later runs are backups. Once the day's
@@ -19,6 +19,9 @@ on:
     - cron: '15 14 * * *'
     - cron: '15 15 * * *'
     - cron: '15 16 * * *'
+    - cron: '15 17 * * *'
+    - cron: '15 18 * * *'
+    - cron: '15 20 * * *'
   workflow_dispatch:
 
 permissions:
