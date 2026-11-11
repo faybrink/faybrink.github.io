@@ -356,6 +356,58 @@
     .footer-legal a { color: var(--muted); text-decoration: none; }
     .footer-legal a:hover { color: var(--gold); }
 
+
+    /* ===== MOCKUP ADDITIONS ===== */
+    /* Light section variant: cream background, navy text */
+    .sec-light { background:#f5f2ec !important; color:var(--navy); }
+    .sec-light .section-eyebrow { color:#8a6420; }
+    .sec-light .section-title { color:var(--navy); }
+    .sec-light .section-body { color:rgba(25,28,69,0.82); }
+    .sec-light .brand-philosophy, .sec-light .about-philosophy { color:var(--navy); }
+    .sec-light .gold-rule { background:linear-gradient(90deg, transparent, #b8862f, transparent); }
+    .sec-light .btn-outline { color:var(--navy); border-color:rgba(25,28,69,0.35); }
+    .sec-light .btn-outline:hover { color:#8a6420; border-color:#8a6420; }
+    .brand-moment-img { box-shadow:0 18px 40px rgba(25,28,69,0.25); }
+    .cred-wall-title { font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#8a6420;text-align:center;margin:4rem 0 2rem; }
+
+    /* Tools card fills the empty grid slots */
+    .spec-tools { grid-column: span 2; background:var(--navy-light) !important; border-top:2px solid var(--gold); }
+    .spec-tools .spec-desc { margin-bottom:1.25rem; }
+    .tool-list { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:0.9rem 1.5rem; }
+    .tool-list a { display:block; text-decoration:none; padding:0.85rem 1rem; border:1px solid rgba(214,162,74,0.25); transition:border-color .3s, background .3s; }
+    .tool-list a:hover { border-color:var(--gold); background:rgba(214,162,74,0.06); }
+    .tool-list strong { display:block; font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:0.06em; color:var(--gold); margin-bottom:0.25rem; font-weight:400; }
+    .tool-list span { font-size:0.78rem; color:var(--muted); line-height:1.5; }
+    @media (max-width:600px){ .spec-tools{grid-column:1/-1;} .tool-list{grid-template-columns:1fr;} }
+
+    /* Contact: info + form side by side */
+    #contact.sec-light { text-align:left; }
+    .contact-wrap { display:grid; grid-template-columns:1fr 1.15fr; gap:4rem; align-items:start; max-width:1100px; margin:0 auto; }
+    .sec-light .contact-tagline { color:var(--navy); margin:0 0 2rem; max-width:none; text-align:left; }
+    .sec-light .contact-grid { grid-template-columns:1fr 1fr; max-width:none; margin:0 0 2rem; gap:1.5rem 2rem; }
+    .sec-light .contact-item { align-items:flex-start; }
+    .sec-light .contact-label { color:#8a6420; }
+    .sec-light .contact-value, .sec-light .contact-value a { color:var(--navy); }
+    .sec-light .social-links { justify-content:flex-start; gap:1.15rem; }
+    .sec-light .soc-icon-link { color:rgba(25,28,69,0.7); }
+    .sec-light .soc-icon-link:hover { color:#8a6420; }
+    .lead-form { background:var(--navy); padding:2.25rem; border-top:2px solid var(--gold); box-shadow:0 18px 40px rgba(25,28,69,0.18); }
+    .lead-form h3 { font-family:'Cinzel',serif; font-weight:400; color:var(--cream); font-size:1.15rem; letter-spacing:0.05em; margin-bottom:0.35rem; }
+    .lead-form p.form-sub { font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem; line-height:1.6; }
+    .lead-form .row { display:grid; grid-template-columns:1fr 1fr; gap:0.9rem; }
+    .lead-form label { display:block; font-family:'Raleway',sans-serif; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin:0 0 0.35rem; }
+    .lead-form label .req { color:var(--gold-light); }
+    .lead-form input, .lead-form select, .lead-form textarea { width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(214,162,74,0.3); color:var(--cream); font-family:'Raleway',sans-serif; font-size:0.9rem; padding:0.7rem 0.8rem; margin-bottom:0.9rem; border-radius:0; }
+    .lead-form select option { color:#191C45; }
+    .lead-form textarea { min-height:96px; resize:vertical; }
+    .lead-form input:focus, .lead-form select:focus, .lead-form textarea:focus { outline:none; border-color:var(--gold); }
+    .lead-form button { width:100%; border:none; cursor:pointer; margin-top:0.3rem; }
+    .lead-form .fine { font-size:0.7rem; color:var(--muted); margin-top:0.9rem; line-height:1.5; }
+    @media (max-width:860px){ .contact-wrap{grid-template-columns:1fr; gap:2.5rem;} .lead-form .row{grid-template-columns:1fr;} .sec-light .contact-grid{grid-template-columns:1fr 1fr;} }
+    @media (max-width:768px){ #brand-moment.sec-light .brand-philosophy{border-top-color:#b8862f;} }
+    /* Fix: inline style kept Philosophy in two columns on phones (also on the live page) */
+    @media (max-width:768px){ #brand-moment{grid-template-columns:1fr !important;gap:2rem !important;padding:3.5rem 6vw !important;} }
+
     /* ANIMATIONS */
     @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
     .hero-text-block > * { opacity:0; animation: fadeUp 0.8s ease forwards; }
@@ -501,22 +553,22 @@ nav{gap:1rem;flex-wrap:wrap;}
     <!-- Name + intro below banner -->
     <div class="hero-intro">
       <div class="hero-text-block">
-        <p class="hero-eyebrow">Houston, Texas · Luxury Real Estate</p>
+        <p class="hero-eyebrow">Cypress &amp; Greater Houston · Residential Real Estate</p>
         <h1 class="hero-name">Fay Brink</h1>
-        <p class="hero-title">Luxury Realtor &nbsp;·&nbsp; New Construction &nbsp;·&nbsp; Divorce Specialist</p>
+        <p class="hero-title">Medical Relocation &nbsp;·&nbsp; New Construction &nbsp;·&nbsp; Divorce &amp; Life Transitions</p>
         <p class="hero-tagline">
           <em>Commitment Beyond Real Estate —</em><br>
-          It's Genuinely Caring About You.
+          It's About Caring for You.
         </p>
         <div class="hero-cta">
           <a href="tel:+18327233025" class="btn-primary">Call (832) 723-3025</a>
-          <a href="#contact" class="btn-outline">Move with Strategy</a>
+          <a href="#contact" class="btn-outline">Send Me a Note</a>
         </div>
       </div>
 
       <div class="hero-photo-wrap">
         <div class="hero-photo-frame">
-          <img src="fay-brink-headshot.jpg" alt="Fay Brink — Luxury Houston Realtor, Renaissance Premier Realty Group, Blair Realty Group" />
+          <img src="fay-brink-headshot-navy.jpg" alt="Fay Brink — Luxury Houston Realtor, Renaissance Premier Realty Group, Blair Realty Group" />
           <div class="broker-badge">
             <p>Brokered by</p>
             <strong>Blair Realty Group</strong>
@@ -529,14 +581,14 @@ nav{gap:1rem;flex-wrap:wrap;}
   <!-- MARQUEE -->
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-inner">
-      <span>Luxury Homes</span><span>New Construction</span><span>Divorce Specialist</span>
-      <span>The Woodlands</span><span>Memorial</span><span>Katy</span>
-      <span>Cypress</span><span>Heights</span><span>Midtown</span>
-      <span>Relocation</span><span>Move with Strategy</span>
-      <span>Luxury Homes</span><span>New Construction</span><span>Divorce Specialist</span>
-      <span>The Woodlands</span><span>Memorial</span><span>Katy</span>
-      <span>Cypress</span><span>Heights</span><span>Midtown</span>
-      <span>Relocation</span><span>Move with Strategy</span>
+      <span>Medical Relocation</span><span>New Construction</span><span>Divorce Real Estate</span>
+      <span>Senior Transitions</span><span>Cypress</span><span>Katy</span>
+      <span>The Woodlands</span><span>Memorial</span><span>Heights</span>
+      <span>Luxury Homes</span><span>Move with Strategy</span>
+      <span>Medical Relocation</span><span>New Construction</span><span>Divorce Real Estate</span>
+      <span>Senior Transitions</span><span>Cypress</span><span>Katy</span>
+      <span>The Woodlands</span><span>Memorial</span><span>Heights</span>
+      <span>Luxury Homes</span><span>Move with Strategy</span>
     </div>
   </div>
 
@@ -548,9 +600,9 @@ nav{gap:1rem;flex-wrap:wrap;}
     <div class="spec-grid">
       <div class="spec-card">
         <div class="spec-number">01</div>
-        <h3 class="spec-title">Luxury Real Estate</h3>
-        <p class="spec-desc">Luxury residential representation in Houston's premier neighborhoods. White-glove service, total discretion, and market intelligence for discerning buyers and sellers.</p>
-        <a href="luxury-real-estate.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Luxury Hub &rarr;</a>
+        <h3 class="spec-title">Medical Relocation</h3>
+        <p class="spec-desc">A former Houston RN who knows every hospital commute, shift schedule, and neighborhood that works at 6&nbsp;AM and 11&nbsp;PM. Serving physicians, nurses, NPs, and allied health professionals relocating to Houston&rsquo;s medical campuses.</p>
+        <a href="medical-relocation.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Medical Relocation Hub &rarr;</a>
       </div>
       <div class="spec-card">
         <div class="spec-number">02</div>
@@ -561,56 +613,67 @@ nav{gap:1rem;flex-wrap:wrap;}
       <div class="spec-card">
         <div class="spec-number">03</div>
         <h3 class="spec-title">Divorce Real Estate</h3>
-        <p class="spec-desc">Certified divorce real estate specialist protecting credit, assets, and housing stability during life transitions. Coordinating with attorneys, mediators, and financial advisors to safeguard your interests at every stage.</p>
+        <p class="spec-desc">Divorce real estate guidance focused on protecting credit, assets, and housing stability during life transitions. Coordinating with attorneys, mediators, and financial advisors to safeguard your interests at every stage.</p>
         <a href="divorce-real-estate.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Divorce Hub &rarr;</a>
       </div>
       <div class="spec-card">
         <div class="spec-number">04</div>
-        <h3 class="spec-title">Houston Relocation</h3>
-        <p class="spec-desc">Three decades of lived experience across Houston's neighborhoods. Guiding relocating executives, families, and professionals from out of state through school districts, commute corridors, and community selection.</p>
-        <a href="relocation.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Relocation Hub &rarr;</a>
-      </div>
-      <div class="spec-card">
-        <div class="spec-number">05</div>
         <h3 class="spec-title">Senior Transitions</h3>
         <p class="spec-desc">Certified Senior Transition Specialist through Mom&rsquo;s House. Compassionate, experienced guidance for seniors, families, and elder care professionals navigating the housing piece of a major life transition with dignity and financial clarity.</p>
         <a href="senior-transition.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Senior Transitions Hub &rarr;</a>
       </div>
       <div class="spec-card">
+        <div class="spec-number">05</div>
+        <h3 class="spec-title">Houston Relocation</h3>
+        <p class="spec-desc">Three decades of lived experience across Houston's neighborhoods. Guiding relocating executives, families, and professionals from out of state through school districts, commute corridors, and community selection.</p>
+        <a href="relocation.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Relocation Hub &rarr;</a>
+      </div>
+      <div class="spec-card">
         <div class="spec-number">06</div>
-        <h3 class="spec-title">Legacy &amp; Estate Protection</h3>
-        <p class="spec-desc">Helping homeowners protect equity from Medicaid spend-down, probate, and estate clawback. Lady Bird Deeds, community property planning, and the wealth preservation strategies most REALTORS&reg; have never heard of.</p>
-        <a href="legacy-protection.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Legacy Protection Hub &rarr;</a>
-      </div>
-      <div class="spec-card">
-        <div class="spec-number">07</div>
-        <h3 class="spec-title">Medical Relocation</h3>
-        <p class="spec-desc">A former Houston RN who knows every hospital commute, shift schedule, and neighborhood that works at 6&nbsp;AM and 11&nbsp;PM. Serving physicians, nurses, NPs, and allied health professionals relocating to Houston&rsquo;s medical campuses.</p>
-        <a href="medical-relocation.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Medical Relocation Hub &rarr;</a>
-      </div>
-      <div class="spec-card">
-        <div class="spec-number">08</div>
         <h3 class="spec-title">Buying a Home</h3>
         <p class="spec-desc">Buyer's rep agreement first, pre-approval second, then a search built around your actual criteria. Insurance-adjuster eyes on every walkthrough and a former nurse's read on how a home actually lives.</p>
         <a href="buying.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Buyer Hub &rarr;</a>
       </div>
       <div class="spec-card">
-        <div class="spec-number">09</div>
+        <div class="spec-number">07</div>
         <h3 class="spec-title">Selling Your Home</h3>
         <p class="spec-desc">Pricing strategy, Houston-specific disclosure guidance, flood history fluency, and honest negotiation from first consultation to closing. No inflated CMAs to win the listing. No sugarcoating the market.</p>
         <a href="selling.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Seller Hub &rarr;</a>
       </div>
       <div class="spec-card">
-        <div class="spec-number">10</div>
+        <div class="spec-number">08</div>
         <h3 class="spec-title">Investor Representation</h3>
         <p class="spec-desc">Research-driven acquisition for buyers building wealth deliberately. RPR valuation analysis, HOA rental restriction review, MUD tax trajectories, absorption rate data, and rental comps before the offer — not after closing.</p>
         <a href="investor.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Investor Hub &rarr;</a>
+      </div>
+      <div class="spec-card">
+        <div class="spec-number">09</div>
+        <h3 class="spec-title">Legacy &amp; Estate Protection</h3>
+        <p class="spec-desc">Helping homeowners protect equity from Medicaid spend-down, probate, and estate clawback. Lady Bird Deeds, community property planning, and the wealth preservation strategies most REALTORS&reg; have never heard of.</p>
+        <a href="legacy-protection.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Legacy Protection Hub &rarr;</a>
+      </div>
+      <div class="spec-card">
+        <div class="spec-number">10</div>
+        <h3 class="spec-title">Luxury Real Estate</h3>
+        <p class="spec-desc">Luxury residential representation in Houston's premier neighborhoods. White-glove service, total discretion, and market intelligence for discerning buyers and sellers.</p>
+        <a href="luxury-real-estate.html" style="display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(214,162,74,0.3);">Luxury Hub &rarr;</a>
+      </div>
+      <div class="spec-card spec-tools">
+        <div class="spec-number">✦</div>
+        <h3 class="spec-title">Free Tools &mdash; Run the Numbers First</h3>
+        <p class="spec-desc">No sign-up wall. Use them at midnight, bring the results to our first call.</p>
+        <ul class="tool-list">
+          <li><a href="divorce-home-calculator.html"><strong>Divorce Home Calculator</strong><span>Keep it, buy out your spouse, or sell?</span></a></li>
+          <li><a href="calculators.html"><strong>Financial Calculators</strong><span>Mortgage, buydowns, homestead savings and more</span></a></li>
+          <li><a href="medical-relocation-guide.html"><strong>Medical Relocation Guide</strong><span>Commutes and neighborhoods by hospital campus</span></a></li>
+          <li><a href="marvida-guide.html"><strong>Marvida Insider Guide</strong><span>Builders, amenities and what move-in ready really includes</span></a></li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- BRAND MOMENT (Nike / Winged Victory) -->
-  <section id="brand-moment" style="background:var(--navy-light);display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:5rem 6vw;">
+  <section id="brand-moment" class="sec-light" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:5rem 6vw;">
     <img src="winged-victory.jpg" alt="Renaissance Premier Realty Group — Move with Strategy" class="brand-moment-img" />
     <div>
       <p class="section-eyebrow">Our Philosophy</p>
@@ -620,7 +683,7 @@ nav{gap:1rem;flex-wrap:wrap;}
         "Relationships over Transactions — that's the Heart of this Business."
       </blockquote>
       <p class="section-body" style="margin-top:1.25rem;">
-        Renaissance Premier Realty Group was built on a singular belief: that every client deserves not just an agent, but a trusted advisor. One who brings luxury-level service to every price point, strategic thinking to every negotiation, and genuine care to every life transition.
+        Renaissance Premier Realty Group was built on a singular belief: that every client deserves not just an agent, but a trusted advisor. One who brings the same level of service to every price point, a plan to every negotiation, and real care to every life transition.
       </p>
     </div>
   </section>
@@ -636,33 +699,33 @@ nav{gap:1rem;flex-wrap:wrap;}
     </div>
     <div class="corridor-grid">
       <div class="corridor-card">
+        <h3 class="corridor-name">Katy &amp; Cypress</h3>
+        <p class="corridor-desc">New construction hotbeds with exceptional value, award-winning schools, and master-planned communities ideal for families and investors.</p>
+      </div>
+      <div class="corridor-card">
         <h3 class="corridor-name">The Woodlands &amp; Spring</h3>
         <p class="corridor-desc">Master-planned luxury living, top-rated schools, and thriving new construction communities in Houston's fastest-growing NW corridor.</p>
+      </div>
+      <div class="corridor-card">
+        <h3 class="corridor-name">North Houston &amp; Beyond</h3>
+        <p class="corridor-desc">Rapidly growing communities offering incredible opportunity for first-time luxury buyers, investors, and relocating families seeking more space.</p>
       </div>
       <div class="corridor-card">
         <h3 class="corridor-name">Memorial &amp; Energy Corridor</h3>
         <p class="corridor-desc">Houston's executive enclave — established luxury estates, premier school districts, and proximity to the city's largest employment hub.</p>
       </div>
       <div class="corridor-card">
-        <h3 class="corridor-name">Katy &amp; Cypress</h3>
-        <p class="corridor-desc">New construction hotbeds with exceptional value, award-winning schools, and master-planned communities ideal for families and investors.</p>
-      </div>
-      <div class="corridor-card">
         <h3 class="corridor-name">Heights, Montrose &amp; Midtown</h3>
         <p class="corridor-desc">Houston's cultural heart — walkable urban luxury, historic character homes, and the city's most vibrant dining, arts, and lifestyle scene.</p>
-      </div>
-      <div class="corridor-card">
-        <h3 class="corridor-name">North Houston &amp; Beyond</h3>
-        <p class="corridor-desc">Rapidly growing communities offering incredible opportunity for first-time luxury buyers, investors, and relocating families seeking more space.</p>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about">
+  <section id="about" class="sec-light">
     <div class="about-grid">
       <div>
-        <img src="fay-brink-about.jpg" alt="Fay Brink, Houston Realtor — Renaissance Premier Realty Group LLC, Brokered by Blair Realty Group" class="about-img" />
+        <img src="fay-brink-headshot-navy.jpg" alt="Fay Brink, Houston Realtor — Renaissance Premier Realty Group LLC, Brokered by Blair Realty Group" class="about-img" />
       </div>
       <div>
         <p class="section-eyebrow">About Fay Brink</p>
@@ -672,10 +735,10 @@ nav{gap:1rem;flex-wrap:wrap;}
           "Integrity creates the foundation. Strategy builds the future. Relationships make it all worth it."
         </blockquote>
         <p class="section-body" style="margin-bottom:1.1rem;">
-          Fay Brink is a luxury Houston Realtor with over three decades of lived experience across Houston's most sought-after neighborhoods. A former licensed RN, she brings an unmatched level of empathy, advocacy, and precision to every transaction.
+          Fay Brink is a Houston Realtor with over three decades of lived experience across Houston's most sought-after neighborhoods. A former Houston RN and former insurance adjuster, she reads a house for how it will actually live and what it may cost you later, not just how it photographs.
         </p>
         <p class="section-body" style="margin-bottom:1.1rem;">
-          Through Renaissance Premier Realty Group LLC, brokered by Blair Realty Group, Fay serves buyers, sellers, investors, and clients in life transition across Houston's W/NW/N/Central corridors — specializing in luxury residential, new construction, divorce real estate, and corporate relocation.
+          Through Renaissance Premier Realty Group LLC, brokered by Blair Realty Group, Fay serves buyers, sellers, investors, and clients in life transition across Houston's W/NW/N/Central corridors — with a focus on medical and corporate relocation, new construction, divorce real estate, and senior transitions.
         </p>
         <p class="section-body" style="margin-bottom:2rem;">
           Off the clock, Fay crochets chemo caps for cancer patients, creates art with her daughter Rachael Grace, and explores Houston's parks and culinary scene with her family.
@@ -683,37 +746,7 @@ nav{gap:1rem;flex-wrap:wrap;}
         <a href="tel:+18327233025" class="btn-primary">Begin Your Strategy Call</a>
       </div>
     </div>
-  </section>
-
-  <!-- CREDENTIALS -->
-  <section id="credentials">
-    <p class="section-eyebrow">Certifications &amp; Designations</p>
-    <h2 class="section-title">Committed to Excellence</h2>
-    <div class="gold-rule"></div>
-    <p class="section-body">Fay holds one of the most comprehensive designation portfolios in Houston real estate — a direct commitment to maximum expertise across every specialty she serves.</p>
-    <div class="cred-grid">
-      <div class="cred-item"><span class="cred-text">Certified New Home Professional (CNHP)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Divorce Real Estate Specialist</span></div>
-      <div class="cred-item"><span class="cred-text">Commitment to Excellence (C2EX)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Expert Listing Agent (CELA)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Listing Professional (CLP)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Expert Buyer's Agent (CEBA)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Business Development Agent (CBDA)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Real Estate Negotiator (CREN)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Home Stager (CHS)</span></div>
-      <div class="cred-item"><span class="cred-text">National Commercial Real Estate Advisor (NCREA)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Real Estate Investment &amp; Portfolio Specialist (CREIPS)</span></div>
-      <div class="cred-item"><span class="cred-text">LUXE Certification</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Luxury Home Agent (CLHA)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Multicultural Real Estate Agent (CMCA)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Real Estate Marketer (CREM)</span></div>
-      <div class="cred-item"><span class="cred-text">Certified Mobile Real Estate Photographer (CMREP)</span></div>
-    </div>
-  </section>
-
-  <!-- CREDENTIAL LOGOS -->
-  <section style="background:#f5f2ec;padding:3rem 5vw;border-top:1px solid rgba(214,162,74,0.15);border-bottom:1px solid rgba(214,162,74,0.15);">
-    <p style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:2rem;">Designations &amp; Certifications</p>
+    <p class="cred-wall-title">Designations &amp; Certifications</p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2rem 3rem;max-width:1080px;margin:0 auto;">
       <img src="cmca-white.png" alt="Certified Multicultural Real Estate Agent (CMCA)" style="height:88px;width:auto;object-fit:contain;" loading="lazy"/>
       <img src="cred-cnhp.png" alt="Certified New Home Professional (CNHP)" style="height:88px;width:auto;object-fit:contain;" loading="lazy"/>
@@ -733,6 +766,8 @@ nav{gap:1rem;flex-wrap:wrap;}
       <img src="cred-cbda.png" alt="Certified Business Development Agent (CBDA)" style="height:88px;width:auto;object-fit:contain;" loading="lazy"/>
     </div>
   </section>
+
+
 
   <!-- BLOG -->
   <section id="blog">
@@ -768,7 +803,7 @@ nav{gap:1rem;flex-wrap:wrap;}
             };
           });
           items.sort(function(a, b){ return b.pubDate - a.pubDate; });
-          var latest = items.slice(0, 5);
+          var latest = items.slice(0, 4);
           if (!latest.length) return;
           grid.innerHTML = latest.map(function(post){
             var dateStr = isNaN(post.pubDate) ? '' : post.pubDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
@@ -787,11 +822,13 @@ nav{gap:1rem;flex-wrap:wrap;}
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <p class="section-eyebrow">Let's Connect</p>
-    <h2 class="section-title" style="text-align:center;">Ready to Move with Strategy?</h2>
-    <div class="gold-rule" style="margin:1.25rem auto;"></div>
-    <p class="contact-tagline">"Commitment Beyond Real Estate — It's Genuinely Caring About You."</p>
+  <section id="contact" class="sec-light">
+    <div class="contact-wrap">
+      <div>
+        <p class="section-eyebrow">Let's Connect</p>
+        <h2 class="section-title">Ready to Move with Strategy?</h2>
+        <div class="gold-rule"></div>
+        <p class="contact-tagline">"Commitment Beyond Real Estate &mdash; It's About Caring for You."</p>
     <div class="contact-grid">
       <div class="contact-item">
         <span class="contact-label">Phone</span>
@@ -826,6 +863,12 @@ nav{gap:1rem;flex-wrap:wrap;}
       <a href="https://youtube.com/@faybrink-yourhoustonrealtor" target="_blank" rel="noopener" class="soc-icon-link" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><span>YouTube</span></a>
       <a href="https://www.tiktok.com/faybrink" target="_blank" rel="noopener" class="soc-icon-link" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34l-.01-8.83a8.19 8.19 0 0 0 4.78 1.52V4.55a4.85 4.85 0 0 1-1-.14z"/></svg><span>TikTok</span></a>
       <a href="https://www.har.com/fay-brink/agent_FBrink" target="_blank" rel="noopener" class="soc-icon-link" aria-label="HAR"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>HAR</span></a>
+    </div>
+      </div>
+      <!-- Homepage lead form: Jotform "Send Me a Note — Homepage Contact" -->
+      <div class="lead-form-embed" style="max-width:600px;width:100%;justify-self:end;border-top:2px solid var(--gold);box-shadow:0 18px 40px rgba(25,28,69,0.18);background:var(--navy);">
+        <iframe src="https://form.jotform.com/263138301847053" style="width:100%;height:539px;border:none;display:block;" title="Send Me a Note — contact Fay Brink" loading="lazy"></iframe>
+      </div>
     </div>
   </section>
 
